@@ -1,6 +1,6 @@
 {
   "name": "shortcake",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shorten your Cakefiles and fix oddities in cake.",
   "main": "lib/",
   "scripts": {
