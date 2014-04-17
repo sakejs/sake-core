@@ -12,15 +12,6 @@ require('source-map-support').install()
 cakeInvoke = global.invoke
 cakeTask   = global.task
 
-# borrowed from cake.coffee
-missingTask = (task) -> fatalError "No such task: #{task}"
-
-# Print an error and exit when attempting to use an invalid task/option.
-fatalError = (message) ->
-  console.error message + '\n'
-  console.log 'To see a list of all tasks/options, run "cake"'
-  process.exit 1
-
 tasks = {}
 
 # our Task takes an optional callback to signal when a task is completed
