@@ -1,0 +1,32 @@
+{
+  "name": "shortcake",
+  "version": "0.0.1",
+  "description": "Shorten your Cakefiles and fix oddities in cake.",
+  "main": "lib/",
+  "scripts": {
+    "test": "cake test"
+  },
+  "bin": "bin/shortcake",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zeekay/shortcake"
+  },
+  "keywords": [
+    "cake",
+    "cakefile",
+    "coffee",
+    "coffee-script",
+    "task"
+  ],
+  "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeekay/shortcake/issues"
+  },
+  "homepage": "https://github.com/zeekay/shortcake",
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2"
+  }
+}
