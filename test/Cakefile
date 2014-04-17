@@ -1,0 +1,18 @@
+require 'shortcake'
+fs = require 'fs'
+
+option '-v', '--verbose', 'Verbose option'
+
+task 'async1', 'async task', (done) ->
+  console.log 'async1'
+
+  fs.readFile __filename, (err, data) ->
+    done err, data
+
+task 'async2', 'second async task', (options) ->
+  console.log 'async2'
+
+task 'async1:async2', 'call first then second task', (options, done) ->
+  invoke 'async1', ->
+    invoke 'async2'
+    console.log 'async1:async2'

@@ -2,8 +2,6 @@ cake  = require 'shortcake'
 path  = require 'path'
 vigil = require 'vigil'
 
-require './test'
-
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 option '-w', '--watch',         'watch for changes and re-run tests'
