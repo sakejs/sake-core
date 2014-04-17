@@ -19,3 +19,7 @@ Fixes the following behavior:
 - Natural command line arguments when using `shortcake` executable, i.e., this
   works: `cake build --minify`
 - Better stacktraces, source map support
+
+Adds the following:
+- Tasks can be passed an optional callback, allowing async tasks to be chained
+  easily.
