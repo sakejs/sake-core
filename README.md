@@ -16,4 +16,5 @@ Just add `require 'shortcake'` at the top of your Cakefile!
 Fixes the following behavior:
 
 - Able to require CoffeeScript modules from Cakefiles automatically.
-- Natural command line arguments when using `shortcake` executable, i.e., this works: `cake build --minify`
+- Natural command line arguments when using `shortcake` executable, i.e., this
+  works: `cake build --minify`
