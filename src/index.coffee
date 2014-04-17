@@ -1,1 +1,4 @@
-module.exports = {}
+exec = require 'executive'
+
+module.exports =
+  exec: exec

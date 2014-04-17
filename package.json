@@ -28,6 +28,10 @@
     "coffee-script": "^1.7.1",
     "chai": "^1.9.1",
     "mocha": "^1.18.2",
-    "source-map-support": "^0.2.5"
+    "source-map-support": "^0.2.5",
+    "vigil": "^0.3.0"
+  },
+  "dependencies": {
+    "executive": "^0.4.7"
   }
 }

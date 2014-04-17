@@ -1,7 +1,6 @@
-# cake  = require 'shortcake'
-exec  = require('executive').interactive
-path  = require 'path'
-vigil = require 'vigil'
+path   = require 'path'
+vigil  = require 'vigil'
+{exec} = require 'shortcake'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
