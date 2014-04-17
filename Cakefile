@@ -1,6 +1,8 @@
-path   = require 'path'
-vigil  = require 'vigil'
-{exec} = require 'shortcake'
+cake  = require 'shortcake'
+path  = require 'path'
+vigil = require 'vigil'
+
+require './test'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
