@@ -41,10 +41,13 @@ task 'build', ->
     invoke 'minify:js'
 ```
 
-You can also pass an array of tasks to invoke, tasks whill be executed in
+You can also pass an array of tasks to invoke, tasks will be executed in
 serial:
 ```coffee
 task 'build', (options) ->
   invoke ['compile:coffee', 'minify:js'], ->
     console.log 'build finished'
 ```
+...or more explicitly with `invoke.serial`.
+
+If you need to execute tasks in parallel you can use `invoke.parallel` instead.
