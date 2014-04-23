@@ -31,16 +31,16 @@ invoke = (name, cb) ->
 
   {action, options} = tasks[name]
 
-  # If task action expects two arguments order is (options, callback).
+  # If task's action expects two arguments order is (options, callback).
   if action.length == 2
     action options, cb
 
-  # If task action expects a single argument named callback, cb, or done, or
+  # If task's action expects a single argument named callback, cb, or done, or
   # next it expects (callback) and no options object.
   else if /function \(callback|cb|done|next\)/.test action
     action cb
 
-  # Unspecified, or wants (options).
+  # Unspecified, or expects (options).
   else
     cb action options
 
