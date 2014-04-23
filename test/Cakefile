@@ -1,5 +1,5 @@
-require 'shortcake'
-fs = require 'fs'
+fs        = require 'fs'
+shortcake = require '..'
 
 option '-v', '--verbose', 'Verbose option'
 

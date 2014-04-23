@@ -3,7 +3,6 @@
 
 var path = require('path');
 
-
 // If first argument to cake looks like a task, move it to end of arguments so
 // cake agrees.
 if (process.argv[2] && process.argv[2].charAt(0) !== '-')
