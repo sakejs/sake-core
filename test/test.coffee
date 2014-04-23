@@ -15,24 +15,47 @@ run = (cmd, cb) ->
     console.log stderr if stderr != ''
     cb err, stdout, stderr
 
-describe 'invoke', ->
+describe 'shortcake', ->
   it 'should show usage like normal cake', (done) ->
     run '', (err, stdout, stderr) ->
       return done err if err
 
-      assert.equal 'Cakefile defines the following tasks:', stdout.lines[0]
+      assert.equal stdout.lines[0], 'Cakefile defines the following tasks:'
       done()
 
-  it 'should execute callback when tasks finishes', (done) ->
-    run 'invoke:callback', (err, stdout, stderr) ->
-      return done err if err
+  describe 'invoke', ->
+    it 'should execute callback when tasks finishes', (done) ->
+      run 'invoke', (err, stdout, stderr) ->
+        return done err if err
 
-      assert.deepEqual ['async1', 'async2', 'async3', ''], stdout.lines
-      done()
+        assert.deepEqual stdout.lines, ['delay:20'
+                                        'delay:10'
+                                        'delay:0'
+                                        'invoke'
+                                        '']
+        done()
 
-  it 'should execute multiple tasks in serial if called with an array', (done) ->
-    run 'invoke:serial', (err, stdout, stderr) ->
-      return done err if err
+  describe 'invoke.serial', ->
+    it 'should invoke multiple tasks in serial', (done) ->
+      run 'invoke.serial', (err, stdout, stderr) ->
+        return done err if err
 
-      assert.deepEqual ['async1', 'async2', 'async3', ''], stdout.lines
-      done()
+        assert.deepEqual stdout.lines, ['delay:20'
+                                        'delay:10'
+                                        'delay:0'
+                                        'invoke.serial'
+                                        '']
+
+        done()
+
+  describe 'invoke.parallel', ->
+    it 'should invoke multiple tasks in parallel', (done) ->
+      run 'invoke.parallel', (err, stdout, stderr) ->
+        return done err if err
+
+        assert.deepEqual stdout.lines, ['delay:0'
+                                        'delay:10'
+                                        'delay:20'
+                                        'invoke.parallel'
+                                        '']
+        done()

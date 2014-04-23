@@ -34,8 +34,11 @@ invoke = (name, cb) ->
   # Pass right arguments to task
   if /function \(done\)/.test action
     action cb
-  else
+  else if /function \(.*,\s?done\)/.test action
     action options, cb
+  else
+    action options
+    cb()
 
 # Invoke tasks in serial
 invokeSerial = (tasks, cb) ->
