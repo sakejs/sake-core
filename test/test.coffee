@@ -17,14 +17,15 @@ run = (cmd, cb) ->
     cb err, stdout, stderr
 
 describe 'shortcake', ->
-  it 'should show usage like normal cake', (done) ->
-    run '', (err, stdout, stderr) ->
-      return done err if err
+  describe 'bin/shortcake', ->
+    it 'should show usage like normal cake', (done) ->
+      run '', (err, stdout, stderr) ->
+        return done err if err
 
-      assert.equal stdout.lines[0], 'Cakefile defines the following tasks:'
-      done()
+        assert.equal stdout.lines[0], 'Cakefile defines the following tasks:'
+        done()
 
-  describe 'invoke', ->
+  describe '#invoke', ->
     it 'should execute callback when tasks finishes', (done) ->
       run 'invoke', (err, stdout, stderr) ->
         return done err if err
@@ -36,7 +37,7 @@ describe 'shortcake', ->
                                         '']
         done()
 
-  describe 'invoke.serial', ->
+  describe '#invoke.serial', ->
     it 'should invoke multiple tasks in serial', (done) ->
       run 'invoke.serial', (err, stdout, stderr) ->
         return done err if err
@@ -49,7 +50,7 @@ describe 'shortcake', ->
 
         done()
 
-  describe 'invoke.parallel', ->
+  describe '#invoke.parallel', ->
     it 'should invoke multiple tasks in parallel', (done) ->
       run 'invoke.parallel', (err, stdout, stderr) ->
         return done err if err
