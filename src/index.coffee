@@ -14,6 +14,16 @@ cakeTask   = global.task
 
 tasks = {}
 
+# our Task takes an optional callback to signal when a task is completed
+global.task = (name, description, action) ->
+  # store reference for ourselves
+  tasks[name] = {action, description, name}
+
+  # make sure original plumbing still works, inject our shim task
+  cakeTask name, description, (options) ->
+    # we capture result of options for our own invoke step
+    tasks[name].options = options
+
 # Our invoke takes a callback which should be called when a task has completed.
 invoke = (name, cb) ->
   # Call original invoke to set options for our task.
@@ -27,27 +37,35 @@ invoke = (name, cb) ->
   else
     action options, cb
 
-# our Task takes an optional callback to signal when a task is completed
-global.task = (name, description, action) ->
-  # store reference for ourselves
-  tasks[name] = {action, description, name}
-
-  # make sure original plumbing still works, inject our shim task
-  cakeTask name, description, (options) ->
-    # we capture result of options for our own invoke step
-    tasks[name].options = options
-
-# Invoke wrapper that lets us handle a series of tasks when passed an array.
-global.invoke = (tasks, callback = ->) ->
-  unless Array.isArray tasks
-    tasks = [tasks]
-
+# Invoke tasks in serial
+invokeSerial = (tasks, cb) ->
   do (next = ->
-    unless tasks.length
-      callback()
+    if tasks.length
+      invoke tasks.shift(), next
     else
-      invoke tasks.shift(), next)
+      cb())
+
+# Invoke tasks in serial
+invokeParallel = (tasks, cb = ->) ->
+  done = 0
+  for task in tasks
+    invoke task, ->
+      if ++done == tasks.length
+        cb()
+
+# wrapper
+global.invoke = (task, cb = ->) ->
+  if Array.isArray task
+    invokeSerial task, cb
+  else
+    invoke task, cb
+
+# expose serial/parallel
+global.invoke.serial = invokeSerial
+global.invoke.parallel = invokeParallel
 
 module.exports =
   exec: exec
   invoke: invoke
+  invokeSerial: invokeSerial
+  invokeParallel: invokeParallel
