@@ -27,13 +27,13 @@ task 'test', 'run tests', (options, done) ->
   options.test ?= '.test'
 
   exec "NODE_ENV=test node_modules/.bin/mocha
-  --colors
-  --reporter spec
-  --timeout 5000
-  --compilers coffee:coffee-script/register
-  --require postmortem/register
-  #{args.join ' '}
-  #{options.test}", done
+                      --colors
+                      --reporter spec
+                      --timeout 5000
+                      --compilers coffee:coffee-script/register
+                      --require postmortem/register
+                      #{args.join ' '}
+                      #{options.test}", done
 
 task 'watch:test', 'watch for changes and recompile, re-run tests', (options) ->
   runningTests = false
