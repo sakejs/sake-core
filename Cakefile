@@ -1,4 +1,5 @@
-exec  = require('shortcake').exec.interactive
+require('coffee-script/register')
+exec  = require('./src').exec.interactive
 path  = require 'path'
 vigil = require 'vigil'
 
