@@ -1,4 +1,4 @@
-# shortcake
+# shortcake [![Build Status](https://travis-ci.org/zeekay/shortcake.svg?branch=master)](https://travis-ci.org/zeekay/shortcake)
 Shorten your Cakefiles and fix oddities in cake!
 
 ### Install
