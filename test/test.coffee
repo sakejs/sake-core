@@ -4,6 +4,7 @@ exec = require('executive').quiet
 
 # path to shortcake
 bin = path.join __dirname, '../bin/shortcake'
+cwd = path.join __dirname, '../test'
 
 # convenient for testing
 Object.defineProperty String.prototype, 'lines',
@@ -11,7 +12,7 @@ Object.defineProperty String.prototype, 'lines',
 
 # wrapper to run shortcake against the Cakefile in test/
 run = (cmd, cb) ->
-  exec "#{bin} #{cmd}", {cwd: __dirname}, (err, stdout, stderr) ->
+  exec "#{bin} #{cmd}", {cwd: cwd}, (err, stdout, stderr) ->
     console.log stderr if stderr != ''
     cb err, stdout, stderr
 
