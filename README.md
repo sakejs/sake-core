@@ -25,21 +25,26 @@ Adds the following:
   easily.
 
 ### Examples
-
+Use the done callback in the task's action to indicate when a task finishes:
 ```coffee
-# done is a callback to signal you are done with a task
 task 'compile:coffee', (done) ->
   exec 'cake -bcm -o lib/ src/', done
 
 task 'minify:js', (done) ->
   exec 'uglify-js lib', done
+```
 
-# just async callbacks
+Invoke takes a callback too, which lets you string asynchronous tasks together:
+```coffee
 task 'build', ->
   invoke 'compile:coffee', ->
     invoke 'minify:js'
+```
 
-# optionally pass list of tasks to invoke
+You can also pass an array of tasks to invoke, tasks whill be executed in
+serial:
+```coffee
 task 'build', (options) ->
-  invoke ['compile:coffee', 'minify:js']
+  invoke ['compile:coffee', 'minify:js'], ->
+    console.log 'build finished'
 ```
