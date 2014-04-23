@@ -14,6 +14,19 @@ cakeTask   = global.task
 
 tasks = {}
 
+# Our invoke takes a callback which should be called when a task has completed.
+invoke = (name, cb) ->
+  # Call original invoke to set options for our task.
+  cakeInvoke name
+
+  {action, options} = tasks[name]
+
+  # Pass right arguments to task
+  if /function \(done\)/.test action
+    action cb
+  else
+    action options, cb
+
 # our Task takes an optional callback to signal when a task is completed
 global.task = (name, description, action) ->
   # store reference for ourselves
@@ -24,21 +37,17 @@ global.task = (name, description, action) ->
     # we capture result of options for our own invoke step
     tasks[name].options = options
 
-# Our invoke takes an optional callback which will be called when task is completed
-global.invoke = (name, done) ->
-  # call original invoke to set options for our task
-  cakeInvoke name
+# Invoke wrapper that lets us handle a series of tasks when passed an array.
+global.invoke = (tasks, callback = ->) ->
+  unless Array.isArray tasks
+    tasks = [tasks]
 
-  {action, options} = tasks[name]
-
-  if typeof done != 'function'
-    done = ->
-
-  if /function \(done\)/.test action
-    # only expects single argument, done
-    action done
-  else
-    action options, done
+  do (next = ->
+    unless tasks.length
+      callback()
+    else
+      invoke tasks.shift(), next)
 
 module.exports =
   exec: exec
+  invoke: invoke
