@@ -31,14 +31,18 @@ invoke = (name, cb) ->
 
   {action, options} = tasks[name]
 
-  # Pass right arguments to task
-  if /function \(done\)/.test action
-    action cb
-  else if /function \(.*,\s?done\)/.test action
+  # If task action expects two arguments order is (options, callback).
+  if action.length == 2
     action options, cb
+
+  # If task action expects a single argument named callback, cb, or done, or
+  # next it expects (callback) and no options object.
+  else if /function \(callback|cb|done|next\)/.test action
+    action cb
+
+  # Unspecified, or wants (options).
   else
-    action options
-    cb()
+    cb action options
 
 # Invoke tasks in serial
 invokeSerial = (tasks, cb) ->

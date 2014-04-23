@@ -1,4 +1,5 @@
-require('coffee-script/register')
+require 'coffee-script/register'
+
 exec  = require('./src').exec.interactive
 path  = require 'path'
 vigil = require 'vigil'
@@ -16,24 +17,25 @@ task 'watch', 'watch for changes and recompile project', ->
   exec 'node_modules/.bin/coffee -bcmw -o .test test/'
 
 task 'test', 'run tests', (options, done) ->
-  args = []
+  invoke 'build', ->
+    args = []
 
-  if options.grep?
-    args.push "--grep #{options.grep}"
+    if options.grep?
+      args.push "--grep #{options.grep}"
 
-  if options.watch?
-    args.push '--watch'
+    if options.watch?
+      args.push '--watch'
 
-  options.test ?= '.test'
+    options.test ?= '.test'
 
-  exec "NODE_ENV=test node_modules/.bin/mocha
-                      --colors
-                      --reporter spec
-                      --timeout 5000
-                      --compilers coffee:coffee-script/register
-                      --require postmortem/register
-                      #{args.join ' '}
-                      #{options.test}", done
+    exec "NODE_ENV=test node_modules/.bin/mocha
+                        --colors
+                        --reporter spec
+                        --timeout 5000
+                        --compilers coffee:coffee-script/register
+                        --require postmortem/register
+                        #{args.join ' '}
+                        #{options.test}", done
 
 task 'watch:test', 'watch for changes and recompile, re-run tests', (options) ->
   runningTests = false
