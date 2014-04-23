@@ -1,20 +1,38 @@
+path = require 'path'
 exec = require('executive').quiet
 {assert} = require 'chai'
 
+# path to shortcake
+bin = path.join __dirname, '../bin/shortcake'
+
+# convenient for testing
+Object.defineProperty String.prototype, 'lines',
+  get: -> @split '\n'
+
+# wrapper to run shortcake against the Cakefile in test/
+run = (cmd, cb) ->
+  exec "#{bin} #{cmd}", {cwd: __dirname}, (err, stdout, stderr) ->
+    console.log stderr if stderr != ''
+    cb err, stdout, stderr
+
 describe 'invoke', ->
+  it 'should show usage like normal cake', (done) ->
+    run '', (err, stdout, stderr) ->
+      return done err if err
+
+      assert.equal 'Cakefile defines the following tasks:', stdout.lines[0]
+      done()
+
   it 'should execute callback when tasks finishes', (done) ->
-    exec 'shortcake invoke', {cwd: __dirname}, (err, out) ->
-      assert.deepEqual ['async1', 'async2', 'async3', ''], out.split '\n'
-      done err
+    run 'invoke:callback', (err, stdout, stderr) ->
+      return done err if err
 
-describe 'invoke.serial', ->
-  it 'should execute multiple tasks in serial', (done) ->
-    exec 'shortcake invoke.serial', {cwd: __dirname}, (err, out) ->
-      assert.deepEqual ['async1', 'async2', 'async3', ''], out.split '\n'
-      done err
+      assert.deepEqual ['async1', 'async2', 'async3', ''], stdout.lines
+      done()
 
-describe 'invoke.parallel'
-  it 'should execute multiple tasks in paral if called with an array', (done) ->
-    exec 'shortcake invoke.parallel', {cwd: __dirname}, (err, out) ->
-      assert.deepEqual ['async1', 'async2', 'async3', ''], out.split '\n'
-      done err
+  it 'should execute multiple tasks in serial if called with an array', (done) ->
+    run 'invoke:serial', (err, stdout, stderr) ->
+      return done err if err
+
+      assert.deepEqual ['async1', 'async2', 'async3', ''], stdout.lines
+      done()
