@@ -27,16 +27,16 @@ Adds the following:
 ### Examples
 Use the done callback in the task's action to indicate when a task finishes:
 ```coffee
-task 'build:compile', 'desc', (done) ->
+task 'build:compile', 'compile src/', (done) ->
   exec 'cake -bcm -o lib/ src/', done
 
-task 'build:minify', 'desc', (done) ->
+task 'build:minify', 'minify lib/', (done) ->
   exec 'uglify-js lib', done
 ```
 
 Invoke takes a callback too, which lets you string asynchronous tasks together:
 ```coffee
-task 'build', 'desc', ->
+task 'build', 'build project', ->
   invoke 'build:compile', ->
     invoke 'build:minify'
 ```
@@ -44,7 +44,7 @@ task 'build', 'desc', ->
 You can also pass an array of tasks to invoke, tasks will be executed in
 serial:
 ```coffee
-task 'build', 'desc', ->
+task 'build', 'build project', ->
   invoke ['build:compile', 'build:minify'], ->
     console.log 'build finished'
 ```
