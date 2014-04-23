@@ -1,7 +1,7 @@
 {
   "name": "shortcake",
   "version": "0.1.8",
-  "description": "Shorten your Cakefiles and fix oddities in cake.",
+  "description": "Asynchronous invoke and other goodies for cake.",
   "main": "lib/",
   "scripts": {
     "test": "cake test",
