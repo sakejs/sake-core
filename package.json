@@ -4,7 +4,8 @@
   "description": "Shorten your Cakefiles and fix oddities in cake.",
   "main": "lib/",
   "scripts": {
-    "test": "cake test"
+    "test": "cake test",
+    "prepublish": "cake build"
   },
   "bin": "bin/shortcake",
   "repository": {
