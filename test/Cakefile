@@ -9,10 +9,17 @@ task 'async1', 'async task', (done) ->
   fs.readFile __filename, (err, data) ->
     done err, data
 
-task 'async2', 'second async task', (options) ->
+task 'async2', 'second async task', (options, done) ->
   console.log 'async2'
 
-task 'async1:async2', 'call first then second task', (options, done) ->
+  fs.readFile __filename, (err, data) ->
+    done err, data
+
+task 'invoke:callback', 'call first then second task', ->
   invoke 'async1', ->
     invoke 'async2'
-    console.log 'async1:async2'
+    console.log 'async3'
+
+task 'invoke:serial', 'call first then second task', ->
+  invoke ['async1', 'async2'], ->
+    console.log 'async3'

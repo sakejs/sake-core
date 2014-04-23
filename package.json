@@ -29,15 +29,15 @@
     "url": "https://github.com/zeekay/shortcake/issues"
   },
   "homepage": "https://github.com/zeekay/shortcake",
+  "dependencies": {
+    "executive": "^0.4.7",
+    "source-map-support": "^0.2.5"
+  },
   "devDependencies": {
     "chai": "^1.9.1",
     "coffee-script": "^1.7.1",
     "mocha": "^1.18.2",
-    "postmortem": "^0.1.6",
-    "vigil": "^0.3.0"
-  },
-  "dependencies": {
-    "executive": "^0.4.7",
-    "source-map-support": "^0.2.5"
+    "postmortem": "^0.1.7",
+    "vigil": "^0.3.1"
   }
 }
