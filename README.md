@@ -1,5 +1,5 @@
 # shortcake [![Build Status](https://travis-ci.org/zeekay/shortcake.svg?branch=master)](https://travis-ci.org/zeekay/shortcake)
-Shorten your Cakefiles and fix oddities in cake!
+Asynchronous invoke and other goodies for cake.
 
 ### Install
 ```
@@ -21,11 +21,11 @@ Fixes the following behavior:
 - Better stacktraces, source map support
 
 Adds the following:
-- Tasks can be passed an optional callback, allowing async tasks to be chained
-  easily.
+- Tasks can be passed an optional callback `done`, allowing async tasks to be
+  chained easily.
 
 ### Examples
-Use the done callback in the task's action to indicate when a task finishes:
+Use the `done` callback in a task's action to indicate when it's done executing:
 ```coffee
 task 'build:compile', 'compile src/', (done) ->
   exec 'cake -bcm -o lib/ src/', done
@@ -34,20 +34,20 @@ task 'build:minify', 'minify lib/', (done) ->
   exec 'uglify-js lib', done
 ```
 
-Invoke takes a callback too, which lets you string asynchronous tasks together:
+Now you can chain your tasks together using callbacks:
 ```coffee
 task 'build', 'build project', ->
   invoke 'build:compile', ->
     invoke 'build:minify'
 ```
 
-You can also pass an array of tasks to invoke, tasks will be executed in
-serial:
+You can also pass an array of tasks `invoke` and it will execute them in order
+for you:
 ```coffee
 task 'build', 'build project', ->
   invoke ['build:compile', 'build:minify'], ->
     console.log 'build finished'
 ```
-...or more explicitly with `invoke.serial`.
+...or more explicitly using `invoke.serial`.
 
-If you need to execute tasks in parallel you can use `invoke.parallel` instead.
+If you need to execute tasks in parallel you can use `invoke.parallel`.
