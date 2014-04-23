@@ -3,6 +3,17 @@ shortcake = require '..'
 
 option '-v', '--verbose', 'Verbose option'
 
+task 'task:options', '', (options) ->
+  console.log options
+
+task 'task:done', '', (done) ->
+  console.log done
+  done()
+
+task 'task:options,done', '', (options, done) ->
+  console.log options
+  done()
+
 task 'delay:0', '', ->
   console.log 'delay:0'
 
