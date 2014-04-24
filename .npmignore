@@ -1,4 +1,7 @@
+.npmignore
+.test
+.travis.yml
 Cakefile
+lib/*.map
 src/
 test/
-lib/*.map
