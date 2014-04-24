@@ -1,5 +1,6 @@
+require 'coffee-script/register'
+exec = require('./src').exec.interactive
 path = require 'path'
-exec = require('./lib').exec.interactive
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
