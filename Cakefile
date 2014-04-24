@@ -1,22 +1,19 @@
-require 'coffee-script/register'
-
-exec  = require('./src').exec.interactive
+exec  = require('executive').interactive
 path  = require 'path'
-vigil = require 'vigil'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 option '-w', '--watch',         'watch for changes and re-run tests'
 
-task 'build', 'compile src/*.coffee to lib/*.js', (done) ->
-  exec ['node_modules/.bin/coffee -bcm -o lib/ src/'
-        'node_modules/.bin/coffee -bcm -o .test test/'], done
+task 'build', 'compile src/*.coffee to lib/*.js', ->
+  exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
+  exec 'node_modules/.bin/coffee -bcm -o .test test/'
 
 task 'watch', 'watch for changes and recompile project', ->
   exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
   exec 'node_modules/.bin/coffee -bcmw -o .test test/'
 
-task 'test', 'run tests', (options, done) ->
+task 'test', 'run tests', (options) ->
   invoke 'build', ->
     args = []
 
@@ -35,7 +32,7 @@ task 'test', 'run tests', (options, done) ->
                         --compilers coffee:coffee-script/register
                         --require postmortem/register
                         #{args.join ' '}
-                        #{options.test}", done
+                        #{options.test}"
 
 task 'watch:test', 'watch for changes and recompile, re-run tests', (options) ->
   runningTests = false
