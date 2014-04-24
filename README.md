@@ -51,3 +51,5 @@ task 'build', 'build project', ->
 ...or more explicitly using `invoke.serial`.
 
 If you need to execute tasks in parallel you can use `invoke.parallel`.
+
+Check [shortcake's Cakefile](Cakefile) for more examples.

@@ -7,13 +7,13 @@ option '-t', '--test',          'test specific module'
 task 'compile:src', 'compile src/', (done) ->
   exec 'node_modules/.bin/coffee -bcm -o lib/ src/', done
 
-task 'compile:test', 'compile test', (done) ->
+task 'compile:test', 'compile test/', (done) ->
   exec 'node_modules/.bin/coffee -bcm -o .test test/', done
 
 task 'build', 'build project', (done) ->
   invoke.parallel ['compile:src', 'compile:test'], done
 
-task 'watch', 'watch for changes and recompile project', ->
+task 'watch', 'watch for changes and rebuild project', ->
   exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
   exec 'node_modules/.bin/coffee -bcmw -o .test test/'
 
@@ -31,7 +31,7 @@ task 'test', 'run tests', (opts, done) ->
                         #{grep}
                         #{test}", done
 
-task 'watch:test', 'watch for changes and recompile, re-run tests', (options) ->
+task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
   runningTests = false
 
   invoke 'test', ->
