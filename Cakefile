@@ -1,38 +1,35 @@
-exec  = require('executive').interactive
-path  = require 'path'
+path = require 'path'
+exec = require('./lib').exec.interactive
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
-option '-w', '--watch',         'watch for changes and re-run tests'
 
-task 'build', 'compile src/*.coffee to lib/*.js', ->
-  exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
-  exec 'node_modules/.bin/coffee -bcm -o .test test/'
+task 'compile:src', 'compile src/', (done) ->
+  exec 'node_modules/.bin/coffee -bcm -o lib/ src/', done
+
+task 'compile:test', 'compile test', (done) ->
+  exec 'node_modules/.bin/coffee -bcm -o .test test/', done
+
+task 'build', 'build project', (done) ->
+  invoke.parallel ['compile:src', 'compile:test'], done
 
 task 'watch', 'watch for changes and recompile project', ->
   exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
   exec 'node_modules/.bin/coffee -bcmw -o .test test/'
 
-task 'test', 'run tests', (options) ->
+task 'test', 'run tests', (opts, done) ->
+  grep = if opts.grep then "--grep #{opts.grep}" else ''
+  test = opts.test ? '.test'
+
   invoke 'build', ->
-    args = []
-
-    if options.grep?
-      args.push "--grep #{options.grep}"
-
-    if options.watch?
-      args.push '--watch'
-
-    options.test ?= '.test'
-
     exec "NODE_ENV=test node_modules/.bin/mocha
                         --colors
                         --reporter spec
                         --timeout 5000
                         --compilers coffee:coffee-script/register
                         --require postmortem/register
-                        #{args.join ' '}
-                        #{options.test}"
+                        #{grep}
+                        #{test}", done
 
 task 'watch:test', 'watch for changes and recompile, re-run tests', (options) ->
   runningTests = false
