@@ -3,6 +3,9 @@ shortcake = require '..'
 
 option '-v', '--verbose', 'Verbose option'
 
+task 'option', '', (options) ->
+  console.log options.verbose
+
 task 'task:options', '', (options) ->
   console.log options
 

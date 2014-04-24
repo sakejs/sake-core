@@ -28,6 +28,16 @@ describe 'shortcake', ->
         assert.equal stdout.lines[0], 'Cakefile defines the following tasks:'
         done()
 
+    it 'should shift tasks from beginning of arguments to end', (done) ->
+      run 'option -v', (err, stdout, stderr) ->
+        assert.equal stdout, 'true'
+        done()
+
+    it 'should not shift options to end of arguments', (done) ->
+      run '-v option', (err, stdout, stderr) ->
+        assert.equal stdout, 'true'
+        done()
+
   describe '#task', ->
     it 'should accept action expecting options', (done) ->
       run 'task:options', (err, stdout, stderr) ->
