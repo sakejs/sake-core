@@ -53,4 +53,5 @@ task 'build', 'build project', ->
 If you need to execute tasks in parallel you can use `invoke.parallel`.
 
 And of course you can peruse [shortcake's
-Cakefile](https://github.com/zeekay/shortcake) for a real world example.
+Cakefile](https://github.com/zeekay/shortcake/blob/master/Cakefile) for a real
+world example.
