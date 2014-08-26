@@ -3,7 +3,9 @@ global.exec = exec = require 'executive'
 
 # CoffeeScript 1.7.0 breaks the ability to require other CoffeeScript modules
 # in your Cakefile, fix this.
-require 'coffee-script/register'
+[major, minor] = (require 'coffee-script/package').version.split '.'
+if major == 1 and 8 > minor >= 7
+  require 'coffee-script/register'
 
 # Get proper stack traces
 require('source-map-support').install()
