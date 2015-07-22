@@ -39,7 +39,7 @@ invoke = (name, cb) ->
 
   # If task's action expects a single argument named callback, cb, or done, or
   # next it expects (callback) and no options object.
-  else if /function \(callback|cb|done|next\)/.test action
+  else if /^function \((callback|cb|done|next)\)/.test action.toString()
     action cb
 
   # Unspecified, or expects (options).
