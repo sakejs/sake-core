@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/zeekay/shortcake",
   "dependencies": {
-    "executive": "^0.4.8",
+    "executive": "^0.5.0",
     "source-map-support": "^0.2.9"
   },
   "devDependencies": {
