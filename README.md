@@ -1,5 +1,5 @@
 # shortcake [![Build Status](https://travis-ci.org/zeekay/shortcake.svg?branch=master)](https://travis-ci.org/zeekay/shortcake)
-Asynchronous invoke and other goodies for cake.
+Asynchronous invoke, dependencies and other goodies for cake.
 
 ### Install
 ```
@@ -21,20 +21,27 @@ Fixes the following behavior:
 - Better stacktraces, source map support
 
 Adds the following:
+- Tasks can declare other tasks as dependencies and require them to execute
+  successfully first.
 - Tasks can be passed an optional callback `done`, allowing async tasks to be
   chained easily.
 
 ### Examples
 Use the `done` callback in a task's action to indicate when it's done executing:
 ```coffee
-task 'build:compile', 'compile src/', (done) ->
+task 'compile', 'compile src/', (done) ->
   exec 'cake -bcm -o lib/ src/', done
 
-task 'build:minify', 'minify lib/', (done) ->
+task 'minify', 'minify lib/', (done) ->
   exec 'uglify-js lib', done
 ```
 
-Now you can chain your tasks together using callbacks:
+Now you can declare dependencies similar to make:
+```coffee
+task 'build', 'build project', ['compile', 'minify'] ->
+```
+
+You can also manually invoke tasks and string them together with callbacks:
 ```coffee
 task 'build', 'build project', ->
   invoke 'build:compile', ->
