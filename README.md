@@ -12,19 +12,17 @@ For best results `alias cake=shortcake` in your `~/.zshrc` or `~/.bashrc`.
 Just add `require 'shortcake'` at the top of your Cakefile!
 
 ### Changes from regular `cake`
+- Tasks can declare other tasks as dependencies and require them to execute
+  successfully first.
+- Tasks can be passed an optional callback `done`, allowing async tasks to be
+  chained easily.
 
-Fixes the following behavior:
+Also fixes the following behavior:
 
 - Able to require CoffeeScript modules from Cakefiles automatically.
 - Natural command line arguments when using `shortcake` executable, i.e., this
   works: `cake build --minify`
 - Better stacktraces, source map support
-
-Adds the following:
-- Tasks can declare other tasks as dependencies and require them to execute
-  successfully first.
-- Tasks can be passed an optional callback `done`, allowing async tasks to be
-  chained easily.
 
 ### Examples
 Use the `done` callback in a task's action to indicate when it's done executing:
