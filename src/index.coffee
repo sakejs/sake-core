@@ -17,9 +17,13 @@ cakeTask   = global.task
 tasks = {}
 
 # our Task takes an optional callback to signal when a task is completed
-global.task = (name, description, action) ->
+global.task = (name, description, deps, action) ->
+  # Alternately support deps as an extra argument
+  unless typeof action is 'function'
+    [action, deps] = [deps, []]
+
   # store reference for ourselves
-  tasks[name] = {action, description, name}
+  tasks[name] = {name, description, deps, action}
 
   # make sure original plumbing still works, inject our shim task
   cakeTask name, description, (options) ->
@@ -31,20 +35,21 @@ invoke = (name, cb) ->
   # Call original invoke to set options for our task.
   cakeInvoke name
 
-  {action, options} = tasks[name]
+  {action, deps, options} = tasks[name]
 
-  # If task's action expects two arguments order is (options, callback).
-  if action.length == 2
-    action options, cb
+  invokeSerial deps, ->
+    # If task's action expects two arguments order is (options, callback).
+    if action.length == 2
+      action options, cb
 
-  # If task's action expects a single argument named callback, cb, or done, or
-  # next it expects (callback) and no options object.
-  else if /^function \((callback|cb|done|next)\)/.test action.toString()
-    action cb
+    # If task's action expects a single argument named callback, cb, or done, or
+    # next it expects (callback) and no options object.
+    else if /^function \((callback|cb|done|next)\)/.test action.toString()
+      action cb
 
-  # Unspecified, or expects (options).
-  else
-    cb action options
+    # Unspecified, or expects (options).
+    else
+      cb action options
 
 # Invoke tasks in serial
 invokeSerial = (tasks, cb) ->
