@@ -16,11 +16,16 @@ cakeTask   = global.task
 
 tasks = {}
 
-# our Task takes an optional callback to signal when a task is completed
+# Our Task can optionally specify dependencies or a callback if it's
+# asynchronous
 global.task = (name, description, deps, action) ->
-  # Alternately support deps as an extra argument
-  unless typeof action is 'function'
+  # No dependencies specified, ex: `task 'name', 'description', ->`
+  if typeof deps is 'function'
     [action, deps] = [deps, []]
+
+  # Missing task function (body), ex: `task 'name', 'description', ['1','2','3']`
+  unless typeof action is 'function'
+    action = ->
 
   # store reference for ourselves
   tasks[name] = {name, description, deps, action}
