@@ -38,7 +38,7 @@ task 'minify', 'minify lib/', (done) ->
 
 Now you can declare dependencies similar to make:
 ```coffee
-task 'build', 'build project', ['compile', 'minify'] ->
+task 'build', 'build project', ['compile', 'minify']
 ```
 
 You can also manually invoke tasks and string them together with callbacks:
