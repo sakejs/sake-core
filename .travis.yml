@@ -1,14 +1,9 @@
 language: node_js
 node_js:
-  - 0.10
-  - 0.12
-  - iojs
-script: >
-  ./node_modules/.bin/mocha --reporter spec \
-                              --timeout 10000 \
-                              --compilers coffee:coffee-script/register \
-                              --require postmortem/register \
-                              .test
+  - 4
+  - 5
+script:
+  - cake test
 cache:
   directories:
     - node_modules
