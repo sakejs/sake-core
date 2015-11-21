@@ -84,11 +84,9 @@ task 'watch:test', 'watch for changes and re-run tests', (options) ->
     return if running 'test'
 
     if /^test/.test filename
-      options.test = filename
+      invoke 'test', test: filename
     if /^src/.test filename
-      options.test = 'test'
-
-    invoke 'test'
+      invoke 'test'
 ```
 
 #### More
