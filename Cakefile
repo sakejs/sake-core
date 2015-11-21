@@ -35,13 +35,13 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
 
     invoke 'test'
 
-task 'git-push', 'Push to github', ->
+task 'git-push', 'push to github', ->
   exec ['git push', 'git push --tags']
 
-task 'npm-publish', 'Publish to npm', ->
+task 'npm-publish', 'publish to npm', ->
   exec 'npm publish'
 
-task 'gh-pages', 'Publish github page', ->
+task 'gh-pages', 'publish github page', ->
   require('brief').update()
 
-task 'publish', 'Publish project', ['git-push', 'npm-publish', 'gh-pages'], ->
+task 'publish', 'Publish project', ['git-push', 'npm-publish', 'gh-pages']
