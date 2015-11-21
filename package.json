@@ -25,12 +25,7 @@
     "tool"
   ],
   "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/zeekay/shortcake/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zeekay/shortcake/issues"
   },
@@ -40,6 +35,7 @@
     "source-map-support": "^0.3.3"
   },
   "devDependencies": {
+    "brief": "^1.1.0",
     "chai": "^3.4.1",
     "coffee-script": "^1.10.0",
     "mocha": "^2.3.4",
