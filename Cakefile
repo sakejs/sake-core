@@ -28,12 +28,11 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
   require('vigil').watch __dirname, (filename, stats) ->
     return if running 'test'
 
-    if /^test/.test filename
-      options.test = filename
     if /^src/.test filename
-      options.test = 'test'
+      invoke 'test'
 
-    invoke 'test'
+    if /^test/.test filename
+      invoke 'test', test: filename
 
 task 'publish', 'Publish project', ->
   # require('brief').update()

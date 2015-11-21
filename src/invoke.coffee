@@ -5,23 +5,32 @@ module.exports = (tasks = {}, cakeInvoke = global.task) ->
   # Our `invoke` takes a callback which should be called when a task has
   # completed.
 
+  cachedOptions = null
+
   invoke = (name, options, cb) ->
-    # Call original invoke to set options on task object.
+    # Called with a callback and no options
+    if isFunction options
+      [cb, options] = [options, {}]
+
+    # Ensure callback and options exist
+    cb      = (->) unless cb?
+    options = {}   unless options?
+
+    # Call original invoke (to throw missing task error, mostly).
     cakeInvoke name
 
-    unless cb?
-      if isFunction options
-        [cb, options] = [options, {}]
+    # Get task object
+    task = tasks[name]
 
-    unless options?
-      options = {}
+    # Cache options
+    cachedOptions ?= task.options
 
-    # Override cake processed opts if provided by caller
-    for k,v of options
-      tasks[name].options[k] = v
+    # Extend caller provided options with cachedOptions
+    for k,v of cachedOptions
+      options[k] ?= v
 
-    # Pull out action, deps, options
-    {action, deps, options} = tasks[name]
+    # Pull out action, deps
+    {action, deps} = task
 
     # Process deps in order
     invokeSerial deps, ->
