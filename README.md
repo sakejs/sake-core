@@ -22,21 +22,16 @@ Just add `require 'shortcake'` at the top of your Cakefile!
 
 ### Examples
 #### Async tasks
-Use the `done` callback in a task's action to indicate when it's done executing:
+Async tasks are easy to declare, any task with an obvious callback will be
+treated as asynchronous. Add an additional argument called `callback`, `cb`,
+`done` or `next` and use it to indicate when your task is finished executing.
 
 ```coffee
-task 'compile', 'compile src/', (done) ->
-  exec 'cake -bcm -o lib/ src/', done
+task 'compile:js', 'compile js', (done) ->
+  exec 'coffee -bc app.coffee', done
 
-task 'minify', 'minify lib/', (done) ->
-  exec 'uglify-js lib', done
-```
-
-#### Declaring dependencies
-Now you can declare dependencies similar to make:
-
-```coffee
-task 'build', 'build project', ['compile', 'minify']
+task 'minify:js',   'minify js', (done) ->
+  exec 'uglify-js --compress --mangle app.js > app.min.js', done
 ```
 
 #### Invoking multiple tasks
@@ -44,28 +39,35 @@ You can manually invoke tasks and string them together with callbacks:
 
 ```coffee
 task 'build', 'build project', ->
-  invoke 'build:compile', ->
-    invoke 'build:minify'
+  invoke 'compile:js', ->
+    invoke 'minify:js'
+```
+
+#### Declaring dependencies
+Dependencies can be declared by adding an array of task names after your task's
+description.
+
+```coffee
+task 'build', 'build project', ['compile:js', 'minify:js']
 ```
 
 #### Serial tasks
-You can pass an array of tasks `invoke` and it will execute them in order
+You can also pass an array of tasks `invoke` and it will execute them in order
 for you:
 
 ```coffee
-task 'build', 'build project', ->
-  invoke ['build:compile', 'build:minify'], ->
-    console.log 'build finished'
+task 'build', 'build project', (done) ->
+  invoke ['compile:js', 'minify:js'], done
 ```
+
 ...or more explicitly using `invoke.serial`.
 
 #### Parallel tasks
-If you need to execute tasks in parallel you can use `invoke.parallel`.
+If you want to execute tasks in parallel you can use `invoke.parallel`.
 
 ```coffee
-task 'build', 'build project', ->
-  invoke ['build:compile', 'build:minify'], ->
-    console.log 'build finished'
+task 'compile', 'compile css & js', (done) ->
+  invoke.parallel ['compile:css', 'compile:js'], done
 ```
 
 #### Detecting running tasks
