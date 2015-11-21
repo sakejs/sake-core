@@ -46,4 +46,4 @@ task 'npm-publish', 'Publish to npm', ->
 task 'gh-pages', 'Publish github page', ->
   require('brief').update()
 
-task 'publish', 'Publish project', ['git-push', 'npm-publish', 'gh-pages']
+task 'publish', 'Publish project', ['git-push', 'npm-publish', 'gh-pages'], ->
