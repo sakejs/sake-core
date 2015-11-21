@@ -84,12 +84,12 @@ invokeWrapper.serial   = invokeSerial
 invokeWrapper.parallel = invokeParallel
 
 # Overwrite invoke and task
-global.invoke  = invokeWrapper
-global.running = running
+global.invoke = invokeWrapper
+global.task   = task
 
 # Expose helpers
-global.exec = exec
-global.task = task
+global.exec    = exec
+global.running = running
 
 module.exports =
   exec:           exec
