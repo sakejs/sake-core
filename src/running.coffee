@@ -1,13 +1,13 @@
 # Keep track of running tasks
-tasks = {}
+runningTasks = {}
 
 running = (name) ->
-  return tasks[name]
+  return runningTasks[name]
 
 running.start = (name) ->
-  tasks[name] = true
+  runningTasks[name] = true
 
 running.stop = (name) ->
-  tasks[name] = false
+  runningTasks[name] = false
 
 module.exports = running
