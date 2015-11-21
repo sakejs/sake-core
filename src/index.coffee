@@ -1,7 +1,7 @@
-(require 'coffee-script/register')
-(require 'source-map-support').install()
+require 'coffee-script/register'
+require 'source-map-support/register'
 
-# save references to original invoke, task
+# Save references to original invoke, task
 cakeInvoke = global.invoke
 cakeTask   = global.task
 
