@@ -4,8 +4,8 @@
   "description": "Asynchronous invoke and other goodies for cake.",
   "main": "lib/",
   "scripts": {
-    "test": "cake test",
-    "prepublish": "cake build"
+    "prepublish": "node_modules/.bin/coffee -bcm -o lib/ src/",
+    "test": "cake test"
   },
   "bin": "bin/shortcake",
   "repository": {
