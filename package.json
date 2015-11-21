@@ -13,11 +13,16 @@
     "url": "git://github.com/zeekay/shortcake"
   },
   "keywords": [
+    "async",
+    "build",
     "cake",
     "cakefile",
+    "cli",
     "coffee",
     "coffee-script",
-    "task"
+    "make",
+    "task",
+    "tool"
   ],
   "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
   "licenses": [
