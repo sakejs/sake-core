@@ -1,5 +1,6 @@
-isFunction = require 'is-function'
-running    = require './running'
+isFunction  = require 'is-function'
+isGenerator = require 'is-generator-fn'
+running     = require './running'
 
 module.exports = (tasks = {}, cakeInvoke = global.task) ->
   # Our `invoke` takes a callback which should be called when a task has
@@ -36,6 +37,15 @@ module.exports = (tasks = {}, cakeInvoke = global.task) ->
     invokeSerial deps, ->
       running.start name
 
+      if isGenerator action
+        gen = action options
+        value = null
+        until (ret = gen.next()).done
+          {value} = ret
+        running.stop name
+        cb value
+        return
+
       # Two arguments, action expects callback
       if action.length == 2
         action options, ->
@@ -51,9 +61,9 @@ module.exports = (tasks = {}, cakeInvoke = global.task) ->
         return
 
       # 0 or 1 argument action, no callback detected
-      res = action options
+      ret = action options
       running.stop name
-      cb res
+      cb ret
 
   # Invoke tasks in serial
   invokeSerial = (tasks, cb) ->

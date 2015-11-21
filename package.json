@@ -33,6 +33,7 @@
   "dependencies": {
     "executive": "^0.5.2",
     "is-function": "^1.0.1",
+    "is-generator-fn": "^1.0.0",
     "source-map-support": "^0.3.3"
   },
   "devDependencies": {
