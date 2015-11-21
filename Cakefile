@@ -5,22 +5,15 @@ path = require 'path'
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
-task 'compile:src', 'compile src/', (done) ->
-  exec 'node_modules/.bin/coffee -bcm -o lib/ src/', done
-
-task 'compile:test', 'compile test/', (done) ->
-  exec 'node_modules/.bin/coffee -bcm -o .test test/', done
-
 task 'build', 'build project', (done) ->
-  invoke.parallel ['compile:src', 'compile:test'], done
+  exec 'node_modules/.bin/coffee -bcm -o lib/ src/', done
 
 task 'watch', 'watch for changes and rebuild project', ->
   exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
-  exec 'node_modules/.bin/coffee -bcmw -o .test test/'
 
 task 'test', 'run tests', (opts, done) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
-  test = opts.test ? '.test'
+  test = opts.test ? 'test'
 
   invoke 'build', ->
     exec "NODE_ENV=test node_modules/.bin/mocha
@@ -28,7 +21,7 @@ task 'test', 'run tests', (opts, done) ->
                         --reporter spec
                         --timeout 5000
                         --compilers coffee:coffee-script/register
-                        --require postmortem/register
+                        --require source-map-support/register
                         #{grep}
                         #{test}", done
 
@@ -59,4 +52,9 @@ task 'gh-pages', 'Publish github page', ->
   require('brief').update()
 
 task 'publish', 'Publish project', ->
-  exec ['git push', 'npm publish', 'cake gh-pages']
+  exec [
+    'git push'
+    'git push --tags'
+    'npm publish'
+  ], ->
+    invoke gh-pages

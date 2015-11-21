@@ -1,5 +1,5 @@
 # Used in literally every Cakefile I write so exported here as a global for easy access.
-global.exec = exec = require 'executive'
+global.exec = exec = require __dirname + '/../node_modules/executive'
 
 # CoffeeScript 1.7.0 breaks the ability to require other CoffeeScript modules
 # in your Cakefile, fix this.
