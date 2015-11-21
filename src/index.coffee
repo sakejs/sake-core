@@ -1,16 +1,10 @@
-# Used in literally every Cakefile I write so exported here as a global for easy access.
-global.exec = exec = require __dirname + '/../node_modules/executive'
+exec       = require __dirname + '/../node_modules/executive'
+running    = require './running'
 
-# CoffeeScript 1.7.0 breaks the ability to require other CoffeeScript modules
-# in your Cakefile, fix this.
-[major, minor] = (require 'coffee-script/package').version.split '.'
-if major == 1 and 8 > minor >= 7
-  require 'coffee-script/register'
+(require 'coffee-script/register')
+(require 'source-map-support').install()
 
-# Get proper stack traces
-require('source-map-support').install()
-
-# references to original invoke, task
+# save references to original invoke, task
 cakeInvoke = global.invoke
 cakeTask   = global.task
 
@@ -18,7 +12,7 @@ tasks = {}
 
 # Our Task can optionally specify dependencies or a callback if it's
 # asynchronous
-global.task = (name, description, deps, action) ->
+task = (name, description, deps, action) ->
   # No dependencies specified, ex: `task 'name', 'description', ->`
   if typeof deps is 'function'
     [action, deps] = [deps, []]
@@ -43,18 +37,26 @@ invoke = (name, cb) ->
   {action, deps, options} = tasks[name]
 
   invokeSerial deps, ->
-    # If task's action expects two arguments order is (options, callback).
+    running.start name
+
+    # Two arguments, action expects callback
     if action.length == 2
-      action options, cb
+      action options, ->
+        running.stop name
+        cb.apply null, arguments
+      return
 
-    # If task's action expects a single argument named callback, cb, or done, or
-    # next it expects (callback) and no options object.
-    else if /^function \((callback|cb|done|next)\)/.test action.toString()
-      action cb
+    # Single argument, detected callback
+    if /^function \((callback|cb|done|next)\)/.test action.toString()
+      action ->
+        running.stop name
+        cb.apply null, arguments
+      return
 
-    # Unspecified, or expects (options).
-    else
-      cb action options
+    # 0 or 1 argument action, no callback detected
+    res = action options
+    running.stop name
+    cb res
 
 # Invoke tasks in serial
 invokeSerial = (tasks, cb) ->
@@ -72,19 +74,23 @@ invokeParallel = (tasks, cb = ->) ->
       if ++done == tasks.length
         cb()
 
-# wrapper
-global.invoke = (task, cb = ->) ->
+invokeWrapper = (task, cb = ->) ->
   if Array.isArray task
     invokeSerial task, cb
   else
     invoke task, cb
 
-# expose serial/parallel
-global.invoke.serial = invokeSerial
-global.invoke.parallel = invokeParallel
+invokeWrapper.serial   = invokeSerial
+invokeWrapper.parallel = invokeParallel
+
+# Overwrite invoke and task, add running helper
+global.invoke  = invokeWrapper
+global.running = running
+global.task    = task
 
 module.exports =
-  exec: exec
-  invoke: invoke
-  invokeSerial: invokeSerial
+  exec:           exec
+  invoke:         invoke
   invokeParallel: invokeParallel
+  invokeSerial:   invokeSerial
+  running:        running
