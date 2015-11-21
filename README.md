@@ -74,7 +74,10 @@ task 'compile', 'compile css & js', (done) ->
 You can check for running tasks using the `running` helper.
 
 ```coffee
-task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
+task 'watch', 'watch for changes and re-compile js', ->
+  exec 'coffee -bcmw -o lib/ src/'
+
+task 'watch:test', 'watch for changes and re-run tests', (options) ->
   invoke 'watch'
 
   require('vigil').watch __dirname, (filename, stats) ->
