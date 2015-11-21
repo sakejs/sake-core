@@ -36,7 +36,7 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
     invoke 'test'
 
 task 'publish', 'Publish project', ->
-  require('brief').update()
+  # require('brief').update()
 
   exec 'git push'
   exec 'git push --tags'
