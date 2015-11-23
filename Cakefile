@@ -15,7 +15,7 @@ task 'test', 'run tests', (opts, done) ->
                       --reporter spec
                       --timeout 5000
                       --compilers coffee:coffee-script/register
-                      --require source-map-support/register
+                      --require postmortem/register
                       #{grep}
                       #{test}", done
 

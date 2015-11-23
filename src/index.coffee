@@ -13,7 +13,7 @@ global.invoke = (require './invoke') tasks, cakeInvoke
 global.task   = (require './task')   tasks, cakeTask
 
 # Helpers
-global.exec    = require __dirname + '/../node_modules/executive'
+global.exec    = require 'executive'
 global.running = require './running'
 
 module.exports =
