@@ -1,5 +1,5 @@
 require 'coffee-script/register'
-require 'source-map-support/register'
+require 'postmortem/register'
 
 # Save references to original invoke, task
 cakeInvoke = global.invoke
