@@ -45,3 +45,24 @@ task 'invoke.serial', '', ->
 task 'invoke.parallel', '', ->
   invoke.parallel ['delay:20', 'delay:10', 'delay:0'], ->
     console.log 'invoke.parallel'
+
+task 'gen', '', ->
+  yield console.log 'gen-1'
+  yield console.log 'gen-2'
+  yield console.log 'gen-3'
+
+task 'gen-promise', '', ->
+  n = 0
+  promise = ->
+    new Promise (resolve, reject) ->
+      n++
+      setTimeout (-> resolve 'promise-' + n), 1000
+
+  value = yield promise()
+  console.log value
+
+  value = yield promise()
+  console.log value
+
+  value = yield promise()
+  console.log value

@@ -34,7 +34,8 @@
     "executive": "^0.5.2",
     "is-function": "^1.0.1",
     "is-generator-fn": "^1.0.0",
-    "postmortem": "^0.2.1"
+    "is-promise": "^2.1.0",
+    "postmortem": "^0.2.3"
   },
   "devDependencies": {
     "brief": "^1.1.0",
