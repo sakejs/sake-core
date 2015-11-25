@@ -38,10 +38,15 @@
     "postmortem": "^0.2.3"
   },
   "devDependencies": {
+    "bluebird": "^3.0.5",
     "brief": "^1.1.0",
     "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0",
+    "co-mocha": "^1.1.2",
     "coffee-script": "^1.10.0",
     "mocha": "^2.3.4",
+    "mz": "^2.1.0",
+    "promise": "^7.0.4",
     "vigil": "^0.5.7"
   }
 }
