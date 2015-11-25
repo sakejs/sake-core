@@ -13,6 +13,7 @@ Object.defineProperty String.prototype, 'lines',
 # wrapper to run shortcake against the Cakefile in test/
 run = (cmd, cb) ->
   exec "#{bin} #{cmd}", {cwd: cwd}, (err, stdout, stderr) ->
+    console.log cwd
     console.log stderr if stderr != ''
     throw err if err?
 
@@ -66,6 +67,20 @@ describe 'shortcake', ->
                                         'delay:10'
                                         'delay:0'
                                         'invoke']
+        done()
+
+    it 'should consume generator tasks completely', (done) ->
+      run 'gen', (err, stdout, stderr) ->
+        assert.deepEqual stdout.lines, ['gen-1'
+                                        'gen-2'
+                                        'gen-3']
+        done()
+
+    it 'should send back promise results to generator tasks', (done) ->
+      run 'gen-promise', (err, stdout, stderr) ->
+        assert.deepEqual stdout.lines, ['promise-1'
+                                        'promise-2'
+                                        'promise-3']
         done()
 
   describe '#invoke.serial', ->
