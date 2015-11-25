@@ -26,7 +26,7 @@ invokeGenerator = (name, action, options, cb) ->
         .then (value) ->
           next value
         .catch (err) ->
-          done err
+          throw err
     else if not res.done
       next res.value
     else

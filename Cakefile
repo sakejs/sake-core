@@ -16,6 +16,7 @@ task 'test', 'run tests', (opts, done) ->
                       --timeout 5000
                       --compilers coffee:coffee-script/register
                       --require postmortem/register
+                      --require co-mocha
                       #{grep}
                       #{test}", done
 

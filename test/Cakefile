@@ -56,7 +56,7 @@ task 'gen-promise', '', ->
   promise = ->
     new Promise (resolve, reject) ->
       n++
-      setTimeout (-> resolve 'promise-' + n), 1000
+      setTimeout (-> resolve 'promise-' + n), 1
 
   value = yield promise()
   console.log value
@@ -66,3 +66,29 @@ task 'gen-promise', '', ->
 
   value = yield promise()
   console.log value
+
+task 'gen-mz', '', ->
+  mfs = require 'mz/fs'
+
+  exists = yield mfs.exists __filename
+  console.log exists
+  exists = yield mfs.exists 'does not exist'
+  console.log exists
+  exists = yield mfs.exists __filename
+  console.log exists
+  exists = yield mfs.exists 'does not exist'
+  console.log exists
+
+task 'gen-bluebird', '', ->
+  Promise = require 'bluebird'
+  pfs = Promise.promisifyAll require 'fs'
+
+  yield (pfs.statAsync 'does not exist').catch (err) ->
+    console.log 'does not exist'
+  stat = yield pfs.statAsync __filename
+  console.log 'exists'
+
+  yield (pfs.statAsync 'does not exist').catch (err) ->
+    console.log 'does not exist'
+  stat = yield pfs.statAsync __filename
+  console.log 'exists'
