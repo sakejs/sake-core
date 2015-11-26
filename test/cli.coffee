@@ -1,5 +1,3 @@
-{run} = require './helper'
-
 describe 'bin/shortcake', ->
   it 'should show normal cake usage', ->
     [stdout, stderr] = yield run ''
