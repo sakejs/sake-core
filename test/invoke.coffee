@@ -1,5 +1,3 @@
-{run}    = require './helper'
-
 describe 'invoke', ->
   it 'should fail to run non-existent task', ->
     yield (run 'non-existent-task')

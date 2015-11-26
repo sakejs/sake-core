@@ -1,5 +1,3 @@
-{run} = require './helper'
-
 describe 'task', ->
   it 'should accept action expecting options', ->
     [stdout, stderr] = yield run 'task:options'

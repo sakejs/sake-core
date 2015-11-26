@@ -1,5 +1,3 @@
-{run}    = require './helper'
-
 describe 'invoke (generator)', ->
   it 'should consume generator tasks completely', ->
     [stdout] = yield run 'gen'

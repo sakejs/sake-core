@@ -33,3 +33,5 @@ exports.run = (cmd, cb) ->
       cb null, stdout, stderr
     .catch (err) ->
       cb err, err.stdout, err.stderr
+
+before -> global.run = exports.run
