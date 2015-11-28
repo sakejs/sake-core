@@ -3,14 +3,14 @@ require './lib'
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
-task 'build', 'build project', (done) ->
-  exec 'node_modules/.bin/coffee -bcm -o lib/ src/', done
+task 'build', 'build project', ->
+  yield exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
 
-task 'test', 'run tests', (opts, done) ->
+task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
   test = opts.test ? 'test/'
 
-  exec "NODE_ENV=test node_modules/.bin/mocha
+  yield exec "NODE_ENV=test node_modules/.bin/mocha
                       --colors
                       --reporter spec
                       --timeout 5000
@@ -18,7 +18,7 @@ task 'test', 'run tests', (opts, done) ->
                       --require postmortem/register
                       --require co-mocha
                       #{grep}
-                      #{test}", done
+                      #{test}"
 
 task 'watch', 'watch for changes and rebuild project', ->
   exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
