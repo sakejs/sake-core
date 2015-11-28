@@ -1,6 +1,6 @@
 {
   "name": "shortcake",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "Asynchronous invoke and other goodies for cake.",
   "main": "lib/",
   "scripts": {
