@@ -10,11 +10,11 @@ path = require 'path'
 exec = require('executive').quiet
 
 # path to shortcake
-bin = path.join __dirname, '../bin/shortcake'
-cwd = path.join __dirname, '../test'
+cwd = __dirname
+bin = path.join cwd, '/../bin/shortcake'
 
 # Helper to run shortcake in tests
-run = (cmd, cb) ->
+run = (cmd) ->
   exec "#{bin} #{cmd}", {cwd: cwd}
 
 before -> global.run = run
