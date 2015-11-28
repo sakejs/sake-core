@@ -1,6 +1,6 @@
 describe 'invoke (generator)', ->
   it 'should consume generator tasks completely', ->
-    [stdout] = yield run 'gen'
+    {stdout} = yield run 'gen'
     stdout.should.eq '''
       gen-1
       gen-2
@@ -8,7 +8,7 @@ describe 'invoke (generator)', ->
       '''
 
   it 'should send back promise results to generator tasks', ->
-    [stdout] = yield run 'gen-promise'
+    {stdout} = yield run 'gen-promise'
     stdout.should.eq '''
       promise-1
       promise-2
@@ -16,7 +16,7 @@ describe 'invoke (generator)', ->
       '''
 
   it 'should support various promise libraries', ->
-    [stdout] = yield run 'gen-mz'
+    {stdout} = yield run 'gen-mz'
     stdout.should.eq '''
       true
       false
@@ -24,7 +24,7 @@ describe 'invoke (generator)', ->
       false
       '''
 
-    [stdout] = yield run 'gen-bluebird'
+    {stdout} = yield run 'gen-bluebird'
     stdout.should.eq '''
       does not exist
       exists
