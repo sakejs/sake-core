@@ -38,6 +38,8 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
 task 'publish', 'Publish project', ->
   # require('brief').update()
 
-  exec 'git push'
-  exec 'git push --tags'
-  exec 'npm publish'
+  exec '''
+  git push
+  git push --tags
+  npm publish
+  '''
