@@ -13,25 +13,8 @@ exec = require('executive').quiet
 bin = path.join __dirname, '../bin/shortcake'
 cwd = path.join __dirname, '../test'
 
-execPromise = (cmd) ->
-  new Promise (resolve, reject) ->
-    exec "#{bin} #{cmd}", {cwd: cwd}, (err, stdout, stderr) ->
-      return reject err if err?
-
-      # strip trailing newline
-      stdout = stdout.substring 0, stdout.length - 1
-
-      resolve([stdout, stderr])
-
 # Helper to run shortcake in tests
-exports.run = (cmd, cb) ->
-  return execPromise cmd unless cb?
+run = (cmd, cb) ->
+  exec "#{bin} #{cmd}", {cwd: cwd}
 
-  execPromise cmd
-    .then (res) ->
-      [stdout, stderr] = res
-      cb null, stdout, stderr
-    .catch (err) ->
-      cb err, err.stdout, err.stderr
-
-before -> global.run = exports.run
+before -> global.run = run
