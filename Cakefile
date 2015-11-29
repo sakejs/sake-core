@@ -38,7 +38,7 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
 task 'publish', 'Publish project', ->
   # require('brief').update()
 
-  exec '''
+  exec.parallel '''
   git push
   git push --tags
   npm publish
