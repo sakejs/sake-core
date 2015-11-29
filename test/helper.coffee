@@ -15,6 +15,11 @@ bin = path.join cwd, '/../bin/shortcake'
 
 # Helper to run shortcake in tests
 run = (cmd) ->
-  exec "#{bin} #{cmd}", {cwd: cwd}
+  p = exec "#{bin} #{cmd}", {cwd: cwd}
+  p.then (res) ->
+    res.stdout = res.stdout.trim()
+    res.stderr = res.stdout.trim()
+  p.catch (err) ->
+    throw err
 
 before -> global.run = run
