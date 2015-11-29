@@ -1,7 +1,6 @@
-isFunction  = require 'is-function'
-isGenerator = require 'is-generator-fn'
-isPromise   = require 'is-promise'
-running     = require './running'
+running = require './running'
+
+{isFunction, isGeneratorFn, isPromise} = require './utils'
 
 invokeGenerator = (name, action, options, cb) ->
   running.start name
@@ -91,7 +90,7 @@ module.exports = (tasks = {}, cakeInvoke = global.task) ->
       running.start name
 
       # Is a generator task
-      if isGenerator action
+      if isGeneratorFn action
         return invokeGenerator name, action, options, cb
 
       # Two arguments, action expects callback

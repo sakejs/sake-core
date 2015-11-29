@@ -1,4 +1,4 @@
-isFunction = require 'is-function'
+{isFunction} = require './utils'
 
 module.exports = (tasks = {}, cakeTask = global.task) ->
   # Our `task` can optionally specify dependencies or a callback if it's

@@ -32,9 +32,6 @@
   "homepage": "https://github.com/zeekay/shortcake",
   "dependencies": {
     "executive": "^1.0.8",
-    "is-function": "^1.0.1",
-    "is-generator-fn": "^1.0.0",
-    "is-promise": "^2.1.0",
     "postmortem": "^0.2.3"
   },
   "devDependencies": {
