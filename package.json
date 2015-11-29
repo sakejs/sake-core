@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/zeekay/shortcake",
   "dependencies": {
-    "executive": "^1.0.2",
+    "executive": "^1.0.4",
     "is-function": "^1.0.1",
     "is-generator-fn": "^1.0.0",
     "is-promise": "^2.1.0",
@@ -44,6 +44,7 @@
     "chai-as-promised": "^5.1.0",
     "co-mocha": "^1.1.2",
     "coffee-script": "^1.10.0",
+    "executive": "^1.0.3",
     "mocha": "^2.3.4",
     "mz": "^2.1.0",
     "promise": "^7.0.4",
