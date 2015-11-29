@@ -1,7 +1,7 @@
 # shortcake [![Build Status](https://travis-ci.org/zeekay/shortcake.svg?branch=master)](https://travis-ci.org/zeekay/shortcake) [![npm version](https://badge.fury.io/js/shortcake.svg)](https://badge.fury.io/js/shortcake)
 
 Adds asynchronous tasks, generators, promises, dependencies and more to
-[cake](http://coffeescript.org/documentation/docs/cake.html).
+[Cake](http://coffeescript.org/documentation/docs/cake.html).
 
 ### Features
 - Asynchronous tasks are fully supported and composable.
