@@ -49,6 +49,9 @@ task 'parallel', '', ->
 task 'promise', '', ->
   invoke 'delay:0'
 
+task 'promise-nested', '', ->
+  invoke 'promise'
+
 task 'gen', '', ->
   yield console.log 'gen-1'
   yield console.log 'gen-2'

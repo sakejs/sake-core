@@ -17,6 +17,14 @@ describe 'invoke', ->
       nested
       '''
 
+  it 'should invoke promises', ->
+    {stdout} = yield run 'promise'
+    stdout.should.eq 'delay:0'
+
+  it 'should invoke nested promises', ->
+    {stdout} = yield run 'promise-nested'
+    stdout.should.eq 'delay:0'
+
 describe 'invoke.parallel', ->
   it 'should invoke tasks in parallel', ->
     {stdout} = yield run 'parallel'
