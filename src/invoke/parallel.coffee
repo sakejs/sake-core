@@ -1,5 +1,4 @@
 log = require '../log'
-
 {isFunction} = require '../utils'
 
 invoke = require './invoke'
@@ -21,6 +20,6 @@ invokeParallel = (tasks, opts, cb) ->
     parallel (err) ->
       reject err if err?
       resolve()
-      cb err
+      cb err if isFunction cb
 
 module.exports = invokeParallel
