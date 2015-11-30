@@ -10,3 +10,9 @@ exports.isGeneratorFn = (fn) ->
 
 exports.isPromise = (p) ->
   isFunction p?.then
+
+exports.isArray = (a) ->
+  Array.isArray a
+
+exports.isString = (s) ->
+  typeof s is 'string'

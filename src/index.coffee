@@ -1,20 +1,11 @@
 require 'coffee-script/register'
 require 'postmortem/register'
 
-# Save references to original invoke, task
-cakeInvoke = global.invoke
-cakeTask   = global.task
-
-# We share tasks between our custom invoke, task
-tasks = {}
-
-# Use our invoke, task
-global.invoke = (require './invoke') tasks, cakeInvoke
-global.task   = (require './task')   tasks, cakeTask
-
-# Helpers
 global.exec    = require 'executive'
+
+global.invoke  = require './invoke'
 global.running = require './running'
+global.task    = require './task'
 
 module.exports =
   exec:    global.exec

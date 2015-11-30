@@ -1,7 +1,7 @@
 describe 'invoke', ->
   it 'should fail to run non-existent task', ->
-    yield (run 'non-existent-task')
-            .should.be.rejectedWith /shortcake exited with code 1/
+    {status} = yield run 'non-existent-task'
+    status.should.eq 1
 
   it 'should execute callback when tasks finishes', ->
     {stdout} = yield run 'invoke'
