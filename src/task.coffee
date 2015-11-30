@@ -5,7 +5,7 @@ tasks = require './tasks'
 
 module.exports = (name, description, deps, action) ->
   # No dependencies specified, ex: `task 'name', 'description', ->`
-  if typeof deps is 'function'
+  if isFunction deps
     [action, deps] = [deps, []]
 
   # Missing task function (body), ex: `task 'name', 'description', ['1','2','3']`
