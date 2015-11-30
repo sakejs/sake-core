@@ -1,11 +1,10 @@
-require 'coffee-script/register'
 require 'postmortem/register'
 
-global.exec    = require 'executive'
-
+global.task    = require './task'
 global.invoke  = require './invoke'
 global.running = require './running'
-global.task    = require './task'
+
+global.exec    = require 'executive'
 
 module.exports =
   exec:    global.exec
