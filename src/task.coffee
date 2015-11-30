@@ -1,9 +1,17 @@
 cake  = require './cake'
 tasks = require './tasks'
 
-{isFunction} = require './utils'
+{isArray, isFunction} = require './utils'
 
 module.exports = (name, description, deps, action) ->
+  # If we're passed name, action
+  if isFunction description
+    [action, description, deps] = [description, '', []]
+
+  # No description, just deps
+  if isArray description
+    [description, deps] = ['', description]
+
   # No dependencies specified, ex: `task 'name', 'description', ->`
   if isFunction deps
     [action, deps] = [deps, []]
@@ -12,10 +20,10 @@ module.exports = (name, description, deps, action) ->
   unless isFunction action
     action = ->
 
-  # store reference for ourselves
+  # Store reference for ourselves
   tasks[name] = {name, description, deps, action}
 
-  # make sure original plumbing still works, inject our shim task
+  # Make sure original plumbing still works, inject our shim task
   cake.task name, description, (options) ->
-    # we capture result of options for our own invoke step
+    # Capture result of options for our own `invoke`
     tasks[name].options = options

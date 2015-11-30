@@ -9,6 +9,9 @@ task 'options', '', (options) ->
 task 'options-empty', '', (options) ->
   console.log options
 
+task 'no-description', ->
+  console.log 'no-description'
+
 task 'async', '', (done) ->
   console.log done
   done()
