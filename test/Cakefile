@@ -3,17 +3,17 @@ shortcake = require '../lib'
 
 option '-v', '--verbose', 'Verbose option'
 
-task 'option', '', (options) ->
+task 'options', '', (options) ->
   console.log options.verbose
 
-task 'task:options', '', (options) ->
+task 'options-empty', '', (options) ->
   console.log options
 
-task 'task:done', '', (done) ->
+task 'async', '', (done) ->
   console.log done
   done()
 
-task 'task:options,done', '', (options, done) ->
+task 'async-options', '', (options, done) ->
   console.log options
   done()
 
@@ -32,19 +32,22 @@ task 'delay:20', '', (options, done) ->
     done()
   , 200
 
-task 'invoke', '', ->
+task 'nested', '', ->
   invoke 'delay:20', ->
     invoke 'delay:10', ->
       invoke 'delay:0', ->
-        console.log 'invoke'
+        console.log 'nested'
 
-task 'invoke.serial', '', ->
-  invoke.serial ['delay:20', 'delay:10', 'delay:0'], ->
-    console.log 'invoke.serial'
+task 'serial', '', ->
+  invoke ['delay:20', 'delay:10', 'delay:0'], ->
+    console.log 'serial'
 
-task 'invoke.parallel', '', ->
+task 'parallel', '', ->
   invoke.parallel ['delay:20', 'delay:10', 'delay:0'], ->
-    console.log 'invoke.parallel'
+    console.log 'parallel'
+
+task 'promise', '', ->
+  invoke 'delay:0'
 
 task 'gen', '', ->
   yield console.log 'gen-1'

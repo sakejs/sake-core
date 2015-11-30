@@ -1,33 +1,28 @@
 describe 'invoke', ->
-  it 'should fail to run non-existent task', ->
-    {status} = yield run 'non-existent-task'
-    status.should.eq 1
-
-  it 'should execute callback when tasks finishes', ->
-    {stdout} = yield run 'invoke'
+  it 'should invoke tasks in serial', ->
+    {stdout} = yield run 'serial'
     stdout.should.eq '''
       delay:20
       delay:10
       delay:0
-      invoke
+      serial
       '''
 
-describe 'invoke.serial', ->
-  it 'should invoke multiple tasks in serial', ->
-    {stdout} = yield run 'invoke.serial'
+  it 'should execute nested invoke calls', ->
+    {stdout} = yield run 'nested'
     stdout.should.eq '''
       delay:20
       delay:10
       delay:0
-      invoke.serial
+      nested
       '''
 
 describe 'invoke.parallel', ->
-  it 'should invoke multiple tasks in parallel', ->
-    {stdout} = yield run 'invoke.parallel'
+  it 'should invoke tasks in parallel', ->
+    {stdout} = yield run 'parallel'
     stdout.should.eq '''
       delay:0
       delay:10
       delay:20
-      invoke.parallel
+      parallel
       '''
