@@ -1,11 +1,24 @@
+cake    = require './cake'
 running = require './running'
+tasks   = require './tasks'
+log     = require './log'
 
-{isFunction, isGeneratorFn, isPromise} = require './utils'
+{
+  isArray
+  isAsyncFunction
+  isFunction
+  isGeneratorFn
+  isPromise
+} = require './utils'
 
-invokeGenerator = (name, action, options, cb) ->
+
+# Invoke a enerator task continually until consumed
+invokeGenerator = (name, action, opts, cb) ->
+  log.debug 'invokeGenerator', name
+
   running.start name
 
-  gen = action options
+  gen = action opts
 
   last = null
   prev = null
@@ -15,7 +28,10 @@ invokeGenerator = (name, action, options, cb) ->
     cb err, (last ? prev)
 
   next = (value) ->
-    res = gen.next value
+    try
+      res = gen.next value
+    catch err
+      return done err
 
     prev = last
     last = res.value
@@ -25,7 +41,7 @@ invokeGenerator = (name, action, options, cb) ->
         .then (value) ->
           next value
         .catch (err) ->
-          throw err
+          done err
     else if not res.done
       next res.value
     else
@@ -33,100 +49,141 @@ invokeGenerator = (name, action, options, cb) ->
 
   next()
 
-invokeAsync = (name, action, options, cb) ->
+# Invoke async task
+invokeAsync = (name, action, opts, cb) ->
+  log.debug 'invokeAsync', name
+
   running.start name
 
   done = ->
     running.stop name
     cb.apply null, arguments
 
-  if options?
-    action options, done
+  if opts?
+    action opts, done
   else
     action done
 
-invokeSync = (name, action, options, cb) ->
+# Invoke sync task
+invokeSync = (name, action, opts, cb) ->
+  log.debug 'invokeSync', name
+
   running.start name
 
-  ret = action options
+  ret = action opts
 
-  running.stop name
-  cb ret
+  if isPromise promise = ret
+    promise
+      .then (value) ->
+        running.stop name
+        cb null, value
+      .catch (err) ->
+        running.stop name
+        cb err
+  else
+    running.stop name
+    cb null, ret
 
+# Invoke delegates to one of the above
+invoke = (name, opts, cb) ->
+  log.debug 'invoke'
 
-module.exports = (tasks = {}, cakeInvoke = global.task) ->
-  # Our `invoke` takes a callback which should be called when a task has
-  # completed.
+  # Calling cake's invoke ensures that options are passed to us correctly as
+  # well as ensuring the normal missing task error is shown.
+  cake.invoke name
 
-  cachedOptions = null
+  # Grab task action, any deps and parsed options
+  {action, deps, options} = tasks[name]
 
-  invoke = (name, options, cb) ->
-    # Called with a callback and no options
-    if isFunction options
-      [cb, options] = [options, {}]
+  # Extend caller provided parsed options
+  opts = Object.assign options, opts
 
-    # Ensure callback and options exist
-    cb      = (->) unless cb?
-    options = {}   unless options?
+  done = (err) ->
+    cb ?= ->
+    cb err
 
-    # Call original invoke (to throw missing task error, mostly).
-    cakeInvoke name
+  invokeAction = (err) ->
+    return done err if err?
 
-    # Get task object
-    task = tasks[name]
+    # Is a generator task
+    if isGeneratorFn action
+      return invokeGenerator name, action, opts, done
 
-    # Cache options
-    cachedOptions ?= task.options
+    # Two arguments, action expects callback
+    if action.length == 2
+      return invokeAsync name, action, opts, done
 
-    # Extend caller provided options with cachedOptions
-    for k, v of cachedOptions
-      options[k] ?= v
+    # Single argument, detected callback
+    if /^function \((callback|cb|done|next)\)/.test action
+      return invokeAsync name, action, null, done
 
-    # Pull out action, deps
-    {action, deps} = task
+    # 0 or 1 argument action, no callback detected
+    invokeSync name, action, opts, done
 
-    # Process deps in order
-    invokeSerial deps, ->
-      running.start name
+  # Process deps in order
+  if deps.length
+    invokeSerial deps, opts, invokeAction
+  else
+    invokeAction()
 
-      # Is a generator task
-      if isGeneratorFn action
-        return invokeGenerator name, action, options, cb
+# Invoke tasks in serial
+invokeSerial = (tasks, opts, cb) ->
+  log.debug 'invokeSerial', tasks, opts
 
-      # Two arguments, action expects callback
-      if action.length == 2
-        return invokeAsync name, action, options, cb
+  serial = (cb) ->
+    next = (err) ->
+      return cb err if err?
 
-      # Single argument, detected callback
-      if /^function \((callback|cb|done|next)\)/.test action.toString()
-        return invokeAsync name, action, null, cb
-
-      # 0 or 1 argument action, no callback detected
-      invokeSync name, action, options, cb
-
-  # Invoke tasks in serial
-  invokeSerial = (tasks, cb) ->
-    do (next = ->
       if tasks.length
-        invoke tasks.shift(), next
+        invoke tasks.shift(), opts, next
       else
-        cb())
+        cb()
+    next()
 
-  # Invoke tasks in serial
-  invokeParallel = (tasks, cb = ->) ->
+  return (serial cb) if isFunction cb
+
+  new Promise (resolve, reject) ->
+    serial (err) ->
+      reject err if err?
+      resolve()
+      cb err
+
+# Invoke tasks in serial
+invokeParallel = (tasks, opts, cb) ->
+  log.debug 'invokeParallel', tasks, opts
+
+  parallel = (cb) ->
     done = 0
     for task in tasks
-      invoke task, ->
+      invoke task, opts, ->
         if ++done == tasks.length
           cb()
 
-  wrapper = (task, cb = ->) ->
-    if Array.isArray task
-      invokeSerial task, cb
-    else
-      invoke task, cb
+  return (parallel cb) if isFunction cb
 
-  wrapper.serial   = invokeSerial
-  wrapper.parallel = invokeParallel
+  new Promise (resolve, reject) ->
+    parallel (err) ->
+      reject err if err?
+      resolve()
+      cb err
 
-  wrapper
+# Wrap invokeSerial, invokeParallel to ensure sane arguments
+wrap = (fn) ->
+  (tasks, opts, cb) ->
+    # Ensure tasks are an array
+    tasks = [tasks] unless isArray tasks
+
+    # Called with a callback and no options
+    if isFunction opts
+      [cb, opts] = [opts, {}]
+
+    # Ensure opts exists
+    opts ?= {}
+
+    fn tasks, opts, cb
+
+wrapper = wrap invokeSerial
+wrapper.serial = wrapper
+wrapper.parallel = wrap invokeParallel
+
+module.exports = wrapper
