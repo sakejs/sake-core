@@ -14,3 +14,17 @@ describe 'task', ->
   it 'should accept task without description', ->
     {stdout} = yield run 'no-description'
     stdout.should.equal 'no-description'
+
+  it 'should accept task without description and deps', ->
+    {stdout} = yield run 'no-description-deps'
+    stdout.should.equal '''
+    no-description
+    no-description-deps
+    '''
+
+  it 'should accept task without description and only deps', ->
+    {stdout} = yield run 'no-description-deps-only'
+    stdout.should.equal '''
+    no-description
+    no-description-deps
+    '''

@@ -12,6 +12,11 @@ task 'options-empty', '', (options) ->
 task 'no-description', ->
   console.log 'no-description'
 
+task 'no-description-deps', ['no-description'], ->
+  console.log 'no-description-deps'
+
+task 'no-description-deps-only', ['no-description-deps']
+
 task 'async', '', (done) ->
   console.log done
   done()
