@@ -4,13 +4,13 @@ option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
 task 'build', 'build project', ->
-  yield exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
+  exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
   test = opts.test ? 'test/'
 
-  yield exec "NODE_ENV=test node_modules/.bin/mocha
+  exec "NODE_ENV=test node_modules/.bin/mocha
                       --colors
                       --reporter spec
                       --timeout 5000
