@@ -37,6 +37,15 @@ task 'minify:js',   'minify js', (done) ->
   exec 'uglify-js --compress --mangle app.js > app.min.js', done
 ```
 
+#### Promise tasks
+You can also return a promise from your task and shortcake will automatically
+wait for it to resolve. Since `executive` returns a promise, this works too:
+
+```coffee
+task 'compile:js', 'compile js', ->
+  exec 'coffee -bc app.coffee'
+```
+
 #### Invoking multiple tasks
 You can manually invoke tasks and string them together with callbacks:
 
