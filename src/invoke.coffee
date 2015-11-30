@@ -99,8 +99,7 @@ invoke = (name, opts, cb) ->
   opts = Object.assign options, opts
 
   done = (err) ->
-    cb ?= ->
-    cb err
+    (cb err) if isFunction cb
 
   invokeAction = (err) ->
     return done err if err?
@@ -120,11 +119,10 @@ invoke = (name, opts, cb) ->
     # 0 or 1 argument action, no callback detected
     invokeSync name, action, opts, done
 
-  # Process deps in order
-  if deps.length
-    invokeSerial deps, opts, invokeAction
-  else
-    invokeAction()
+  # Process deps first if any
+  return invokeSerial deps, opts, invokeAction
+
+  invokeAction()
 
 # Invoke tasks in serial
 invokeSerial = (tasks, opts, cb) ->
