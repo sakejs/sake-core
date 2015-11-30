@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/zeekay/shortcake",
   "dependencies": {
+    "chalk": "^1.1.1",
     "executive": "^1.1.2",
     "postmortem": "^0.2.3"
   },
