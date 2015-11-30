@@ -4,13 +4,13 @@ option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
 task 'build', 'build project', ->
-  exec 'node_modules/.bin/coffee -bcm -o lib/ src/'
+  exec 'coffee -bcm -o lib/ src/'
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
   test = opts.test ? 'test/'
 
-  exec "NODE_ENV=test node_modules/.bin/mocha
+  exec "NODE_ENV=test mocha
                       --colors
                       --reporter spec
                       --timeout 5000
@@ -21,7 +21,7 @@ task 'test', 'run tests', (opts) ->
                       #{test}"
 
 task 'watch', 'watch for changes and rebuild project', ->
-  exec 'node_modules/.bin/coffee -bcmw -o lib/ src/'
+  exec 'coffee -bcmw -o lib/ src/'
 
 task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
   invoke 'watch'
