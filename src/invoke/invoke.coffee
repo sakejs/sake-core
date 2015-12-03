@@ -15,6 +15,7 @@ invoked = {}
 invoke = (name, opts, cb) ->
   log.debug 'invoke'
 
+  # Prevent recursive calls
   return if invoked[name]
   invoked[name] = true
 
