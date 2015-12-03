@@ -9,9 +9,14 @@ invokeSync      = require './sync'
 
 {isFunction, isGeneratorFn} = require '../utils'
 
+invoked = {}
+
 # Invoke delegates to one of the above
 invoke = (name, opts, cb) ->
   log.debug 'invoke'
+
+  return if invoked[name]
+  invoked[name] = true
 
   # Calling cake's invoke ensures that options are passed to us correctly as
   # well as ensuring the normal missing task error is shown.
@@ -24,6 +29,7 @@ invoke = (name, opts, cb) ->
   opts = Object.assign options, opts
 
   done = (err) ->
+    invoked = {}
     (cb err) if isFunction cb
 
   invokeAction = (err) ->
