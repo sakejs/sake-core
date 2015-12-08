@@ -10,6 +10,7 @@ process.env.PATH = ([binPath].concat process.env.PATH.split ':').join ':'
 global.task    = require './task'
 global.invoke  = require './invoke'
 global.running = require './running'
+global.use     = require './use'
 
 global.exec    = require 'executive'
 
