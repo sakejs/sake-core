@@ -1,4 +1,13 @@
-task  = require './task'
+task = require './task'
+
+{option}               = require './cake'
+{isFunction, isString} = require './utils'
 
 module.exports = (pkg) ->
-  pkg task
+  if isString pkg
+    pkg = require pkg
+
+  if isFunction pkg
+    return pkg task, option
+
+  pkg
