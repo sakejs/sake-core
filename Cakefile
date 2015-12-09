@@ -3,6 +3,8 @@ require './lib'
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
+use 'cake-version'
+
 task 'build', 'build project', ->
   exec 'coffee -bcm -o lib/ src/'
 
