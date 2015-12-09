@@ -1,2 +1,6 @@
 # Global task cache
-module.exports = {}
+tasks = {}
+tasks.has = (key) ->
+  tasks[key]?
+
+module.exports = tasks
