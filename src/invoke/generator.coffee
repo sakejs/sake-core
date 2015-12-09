@@ -23,6 +23,7 @@ invokeGenerator = (name, action, opts, cb) ->
     try
       res = gen.next value
     catch err
+      console.error err.stack
       return done err
 
     prev = last
