@@ -4,6 +4,7 @@ option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
 use 'cake-version'
+use 'cake-publish'
 
 task 'build', 'build project', ->
   exec 'coffee -bcm -o lib/ src/'
@@ -36,12 +37,3 @@ task 'watch:test', 'watch for changes and rebuild, rerun tests', (options) ->
 
     if /^test/.test filename
       invoke 'test', test: filename
-
-task 'publish', 'Publish project', ->
-  # require('brief').update()
-
-  exec.parallel '''
-  git push
-  git push --tags
-  npm publish
-  '''
