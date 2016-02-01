@@ -1,5 +1,5 @@
-Promise = 'broken'
-cp = require 'cp'
+Promise = require 'broken'
+cp      = require 'cp'
 
 {isFunction} = require './utils'
 
