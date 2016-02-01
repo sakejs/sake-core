@@ -7,7 +7,7 @@ binPath = path.join process.cwd(), 'node_modules/', '.bin'
 
 process.env.PATH = ([binPath].concat process.env.PATH.split ':').join ':'
 
-global.cp      = require 'cp'
+global.cp      = require './cp'
 global.exec    = require 'executive'
 global.invoke  = require './invoke'
 global.running = require './running'
