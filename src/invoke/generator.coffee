@@ -17,6 +17,7 @@ invokeGenerator = (name, action, opts, cb) ->
 
   done = (err) ->
     running.stop name
+    console.error err.stack if err?
     cb err, (last ? prev)
 
   next = (value) ->
