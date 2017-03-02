@@ -36,7 +36,7 @@
     "cp": "0.2.0",
     "executive": "1.1.9",
     "postmortem": "^0.2.4",
-    "vigil": "0.7.2"
+    "vigil": "0.7.3"
   },
   "devDependencies": {
     "bluebird": "3.4.7",
