@@ -1,7 +1,7 @@
 require 'postmortem/register'
-require 'vigil'
 
-path = require 'path'
+path  = require 'path'
+vigil = require 'vigil'
 
 # Ensure local node_modules bin is on the front of $PATH
 binPath = path.join process.cwd(), 'node_modules/', '.bin'
