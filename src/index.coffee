@@ -1,4 +1,5 @@
 require 'postmortem/register'
+require 'vigil'
 
 path = require 'path'
 
@@ -14,6 +15,8 @@ global.running = require './running'
 global.task    = require './task'
 global.tasks   = require './tasks'
 global.use     = require './use'
+global.walk    = vigil.walk
+global.watch   = vigil.watch
 
 module.exports =
   cp:      cp
