@@ -39,7 +39,7 @@
     "vigil": "0.7.3"
   },
   "devDependencies": {
-    "bluebird": "3.4.7",
+    "bluebird": "3.5.0",
     "brief": "^1.1.0",
     "cake-publish": "0.1.5",
     "cake-test": "0.1.0",
