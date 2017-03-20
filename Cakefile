@@ -5,6 +5,7 @@ option '-t', '--test',          'test specific module'
 
 use 'cake-version'
 use 'cake-publish'
+use 'cake-outdated'
 
 task 'build', 'build project', ->
   exec 'coffee -bcm -o lib/ src/'
