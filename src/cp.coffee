@@ -1,4 +1,3 @@
-Promise = require 'broken'
 cp      = require 'cp'
 path    = require 'path'
 fs      = require 'fs'
