@@ -13,7 +13,7 @@
   "files": [
     "bin/shortcake",
     "src/",
-    "dist/"
+    "lib/"
   ],
   "repository": {
     "type": "git",
