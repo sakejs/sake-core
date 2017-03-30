@@ -1,6 +1,6 @@
 {
   "name": "shortcake",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Asynchronous invoke and other goodies for cake.",
   "main": "lib/shortcake.js",
   "module": "lib/shortcake.mjs",
