@@ -2,9 +2,9 @@
   "name": "shortcake",
   "version": "1.2.5",
   "description": "Asynchronous invoke and other goodies for cake.",
-  "main": "lib/shortcake.cjs.js",
-  "module": "lib/shortcake.es.js",
-  "jsnext:main": "lib/shortcake.es.js",
+  "main": "lib/shortcake.js",
+  "module": "lib/shortcake.mjs",
+  "jsnext:main": "lib/shortcake.mjs",
   "scripts": {
     "prepublishOnly": "cake build",
     "test": "cake test"
@@ -31,7 +31,7 @@
     "task",
     "tool"
   ],
-  "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
+  "author": "Zach Kelling <z@zeekay.io>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zeekay/shortcake/issues"
