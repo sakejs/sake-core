@@ -9,8 +9,14 @@ use 'cake-publish'
 use 'cake-outdated'
 
 task 'build', 'build project', ->
-  bundle.write
-    entry: 'src/index.coffee'
+  Promise.all [
+    bundle.write
+      entry: 'src/index.coffee'
+    bundle.write
+      entry:  'src/cli.coffee'
+      format: 'cjs'
+      dest:   'lib/cli.js'
+  ]
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
