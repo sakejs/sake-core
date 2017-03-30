@@ -1,7 +1,6 @@
-log = require '../log'
-{isFunction} = require '../utils'
-
-invoke = require './invoke'
+import invoke       from './invoke'
+import log          from '../log'
+import {isFunction} from '../utils'
 
 # Invoke tasks in serial
 invokeParallel = (tasks, opts, cb) ->
@@ -22,4 +21,4 @@ invokeParallel = (tasks, opts, cb) ->
       resolve()
       cb err if isFunction cb
 
-module.exports = invokeParallel
+export default invokeParallel

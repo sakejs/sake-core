@@ -6,7 +6,7 @@ cakeInvoke = global.invoke
 cakeOption = global.option
 cakeTask   = global.task
 
-module.exports =
+export default cake =
   invoke: cakeInvoke
   option: cakeOption
   task:   cakeTask

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var fs            = require('fs');
-var path          = require('path');
+var fs   = require('fs');
+var path = require('path');
 
-var localCli = path.join(process.cwd(), 'node_modules/shortcake/lib/cli.js');
+var localCli = path.join(process.cwd(), 'node_modules/shortcake/lib/cli');
 
 if (fs.existsSync(localCli)) {
     // Prefer local copy of shortcake to global installed copy

@@ -1,5 +1,5 @@
-chalk      = require 'chalk'
-{isString} = require './utils'
+import chalk      from 'chalk'
+import {isString} from './utils'
 
 verbose = process.env.VERBOSE ? false
 
@@ -32,8 +32,11 @@ methods =
   modified: 'cyan'
   compiled: 'blue'
 
+wrapper = logger 'info', 'white'
 for k,v of methods
-  exports[k] = logger k,v
+  wrapper[k] = logger k,v
 
-exports.verbose = (bool = !verbose) ->
+wrapper.verbose = (bool = !verbose) ->
   verbose = bool
+
+export default wrapper

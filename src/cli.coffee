@@ -1,4 +1,4 @@
-path = require 'path'
+import path from 'path'
 
 cake      = null
 cakePath  = 'coffee-script/lib/coffee-script/cake'

@@ -1,18 +1,18 @@
-exports.isFunction = isFunction = (fn) ->
+export isFunction = (fn) ->
   typeof fn is 'function'
 
-exports.isGenerator = (g) ->
+export isGenerator = (g) ->
   (isFunction g?.next) and (isFunction g.throw)
 
-exports.isGeneratorFn = (fn) ->
+export isGeneratorFn = (fn) ->
   return false unless isFunction fn
   fn?.constructor?.name is 'GeneratorFunction'
 
-exports.isPromise = (p) ->
+export isPromise = (p) ->
   isFunction p?.then
 
-exports.isArray = (a) ->
+export isArray = (a) ->
   Array.isArray a
 
-exports.isString = (s) ->
+export isString = (s) ->
   typeof s is 'string'

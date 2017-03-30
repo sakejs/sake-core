@@ -3,4 +3,4 @@ tasks = {}
 tasks.has = (key) ->
   tasks[key]?
 
-module.exports = tasks
+export default tasks

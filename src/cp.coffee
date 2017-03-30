@@ -1,10 +1,10 @@
-cp      = require 'cp'
-path    = require 'path'
-fs      = require 'fs'
+import cp   from 'cp'
+import path from 'path'
+import fs   from 'fs'
 
-{isFunction} = require './utils'
+import {isFunction} from './utils'
 
-module.exports = (src, dst, opts, cb) ->
+export default (src, dst, opts, cb) ->
   if isFunction opts
     [opts, cb] = [{}, opts]
 

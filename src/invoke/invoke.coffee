@@ -1,13 +1,11 @@
-cake  = require '../cake'
-log   = require '../log'
-tasks = require '../tasks'
-
-# Invoke a enerator task continually until consumed
-invokeGenerator = require './generator'
-invokeAsync     = require './async'
-invokeSync      = require './sync'
-
-{isFunction, isGeneratorFn} = require '../utils'
+import cake            from '../cake'
+import invokeAsync     from './async'
+import invokeGenerator from './generator'
+import invokeSync      from './sync'
+import log             from '../log'
+import serial          from './serial'
+import tasks           from '../tasks'
+import {isFunction, isGeneratorFn} from '../utils'
 
 invoked = {}
 
@@ -52,8 +50,8 @@ invoke = (name, opts, cb) ->
     invokeSync name, action, opts, done
 
   # Process deps first if any
-  return require('./serial') deps, opts, invokeAction
+  return serial deps, opts, invokeAction
 
   invokeAction()
 
-module.exports = invoke
+export default invoke

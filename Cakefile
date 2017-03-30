@@ -1,14 +1,16 @@
-require './lib'
+require './'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
+use 'cake-bundle'
 use 'cake-version'
 use 'cake-publish'
 use 'cake-outdated'
 
 task 'build', 'build project', ->
-  exec 'coffee -bcm -o lib/ src/'
+  bundle.write
+    entry: 'src/index.coffee'
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
