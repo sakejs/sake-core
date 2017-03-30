@@ -1,4 +1,6 @@
-{isArray, isFunction} = require '../utils'
+import parallel from './parallel'
+import serial   from './serial'
+import {isArray, isFunction} from '../utils'
 
 # Wrap invokeSerial, invokeParallel to ensure sane arguments
 wrap = (fn) ->
@@ -15,8 +17,8 @@ wrap = (fn) ->
 
     fn tasks, opts, cb
 
-wrapper = wrap require './serial'
-wrapper.serial = wrapper  # aliased
-wrapper.parallel = wrap require './parallel'
+wrapper = wrap serial
+wrapper.serial   = wrapper  # aliased
+wrapper.parallel = wrap parallel
 
-module.exports = wrapper
+export default wrapper

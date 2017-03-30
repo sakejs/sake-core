@@ -1,6 +1,6 @@
-{isFunction, isString} = require './utils'
+import {isFunction, isString} from './utils'
 
-module.exports = (pkg, opts = {}) ->
+export default (pkg, opts = {}) ->
   if isString pkg
     pkg = require pkg
 

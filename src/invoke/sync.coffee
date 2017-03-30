@@ -1,7 +1,7 @@
-log     = require '../log'
-running = require '../running'
+import log     from '../log'
+import running from '../running'
 
-{isPromise} = require '../utils'
+import {isPromise} from '../utils'
 
 # Invoke sync task
 invokeSync = (name, action, opts, cb) ->
@@ -23,4 +23,4 @@ invokeSync = (name, action, opts, cb) ->
     running.stop name
     cb null, ret
 
-module.exports = invokeSync
+export default invokeSync

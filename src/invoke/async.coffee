@@ -1,5 +1,5 @@
-log     = require '../log'
-running = require '../running'
+import log     from '../log'
+import running from '../running'
 
 # Invoke async task
 invokeAsync = (name, action, opts, cb) ->
@@ -16,4 +16,4 @@ invokeAsync = (name, action, opts, cb) ->
   else
     action done
 
-module.exports = invokeAsync
+export default invokeAsync

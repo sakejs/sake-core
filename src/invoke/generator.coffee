@@ -1,7 +1,6 @@
-log     = require '../log'
-running = require '../running'
-
-{isPromise} = require '../utils'
+import log         from '../log'
+import running     from '../running'
+import {isPromise} from '../utils'
 
 
 # Invoke a enerator task continually until consumed
@@ -43,4 +42,4 @@ invokeGenerator = (name, action, opts, cb) ->
 
   next()
 
-module.exports = invokeGenerator
+export default invokeGenerator

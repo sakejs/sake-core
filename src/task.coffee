@@ -1,10 +1,10 @@
-cake  = require './cake'
-log   = require './log'
-tasks = require './tasks'
+import cake  from './cake'
+import log   from './log'
+import tasks from './tasks'
 
-{isArray, isFunction} = require './utils'
+import {isArray, isFunction} from './utils'
 
-module.exports = (name, description, deps, action) ->
+export default (name, description, deps, action) ->
   # No description, just deps
   if isArray description
     action = deps if isFunction deps

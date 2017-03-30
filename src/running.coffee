@@ -1,4 +1,4 @@
-log = require './log'
+import log from './log'
 
 # Keep track of running tasks
 runningTasks = {}
@@ -14,4 +14,4 @@ running.stop = (name) ->
   log.info 'stopped', name
   runningTasks[name] = false
 
-module.exports = running
+export default running
