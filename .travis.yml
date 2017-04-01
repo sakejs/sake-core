@@ -3,8 +3,10 @@ language: node_js
 node_js:
   - 7
 script:
-  - cake build
-  - cake test
+  - node_modules/.bin/handroll src/cli.coffee --cjs --dest lib/cli.js
+  - node_modules/.bin/handroll src/index.coffee --cjs --dest lib/shortcake.js
+  - node_modules/.bin/shortcake build
+  - node_modules/.bin/shortcake test
 cache:
   directories:
     - node_modules
