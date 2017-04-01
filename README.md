@@ -140,19 +140,19 @@ You can peruse [shortcake's
 Cakefile](https://github.com/zeekay/shortcake/blob/master/Cakefile) for a real
 world example.
 
-[travis-img]:     https://img.shields.io/travis/zeekay/referential.svg
-[travis-url]:     https://travis-ci.org/zeekay/referential
-[coveralls-img]:  https://coveralls.io/repos/zeekay/referential/badge.svg?branch=master&service=github
-[coveralls-url]:  https://coveralls.io/github/zeekay/referential?branch=master
-[dependency-url]: https://david-dm.org/zeekay/referential
-[dependency-img]: https://david-dm.org/zeekay/referential.svg
-[npm-img]:        https://img.shields.io/npm/v/referential.svg
-[npm-url]:        https://www.npmjs.com/package/referential
+[travis-img]:     https://img.shields.io/travis/zeekay/shortcake.svg
+[travis-url]:     https://travis-ci.org/zeekay/shortcake
+[coveralls-img]:  https://coveralls.io/repos/zeekay/shortcake/badge.svg?branch=master&service=github
+[coveralls-url]:  https://coveralls.io/github/zeekay/shortcake?branch=master
+[dependency-url]: https://david-dm.org/zeekay/shortcake
+[dependency-img]: https://david-dm.org/zeekay/shortcake.svg
+[npm-img]:        https://img.shields.io/npm/v/shortcake.svg
+[npm-url]:        https://www.npmjs.com/package/shortcake
 [gitter-img]:     https://badges.gitter.im/join-chat.svg
 [gitter-url]:     https://gitter.im/zeekay/hi
 
 <!-- not used -->
-[downloads-img]:     https://img.shields.io/npm/dm/referential.svg
-[downloads-url]:     http://badge.fury.io/js/referential
-[devdependency-img]: https://david-dm.org/zeekay/referential/dev-status.svg
-[devdependency-url]: https://david-dm.org/zeekay/referential#info=devDependencies
+[downloads-img]:     https://img.shields.io/npm/dm/shortcake.svg
+[downloads-url]:     http://badge.fury.io/js/shortcake
+[devdependency-img]: https://david-dm.org/zeekay/shortcake/dev-status.svg
+[devdependency-url]: https://david-dm.org/zeekay/shortcake#info=devDependencies
