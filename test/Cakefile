@@ -1,5 +1,5 @@
 fs        = require 'fs'
-shortcake = require '../lib'
+shortcake = require '../'
 
 option '-v', '--verbose', 'Verbose option'
 
