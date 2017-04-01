@@ -1,6 +1,4 @@
-# shortcake [![Build Status](https://travis-ci.org/zeekay/shortcake.svg?branch=master)](https://travis-ci.org/zeekay/shortcake) [![npm version](https://badge.fury.io/js/shortcake.svg)](https://badge.fury.io/js/shortcake)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/zeekay/shortcake.svg)](https://greenkeeper.io/)
+# shortcake [![NPM version][npm-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Dependency Status][dependency-img]][dependency-url] [![Gitter chat][gitter-img]][gitter-url]
 
 Adds asynchronous tasks, generators, promises, dependencies and more to
 [Cake](http://coffeescript.org/documentation/docs/cake.html).
@@ -141,3 +139,20 @@ task 'package', 'Package project', ->
 You can peruse [shortcake's
 Cakefile](https://github.com/zeekay/shortcake/blob/master/Cakefile) for a real
 world example.
+
+[travis-img]:     https://img.shields.io/travis/zeekay/referential.svg
+[travis-url]:     https://travis-ci.org/zeekay/referential
+[coveralls-img]:  https://coveralls.io/repos/zeekay/referential/badge.svg?branch=master&service=github
+[coveralls-url]:  https://coveralls.io/github/zeekay/referential?branch=master
+[dependency-url]: https://david-dm.org/zeekay/referential
+[dependency-img]: https://david-dm.org/zeekay/referential.svg
+[npm-img]:        https://img.shields.io/npm/v/referential.svg
+[npm-url]:        https://www.npmjs.com/package/referential
+[gitter-img]:     https://badges.gitter.im/join-chat.svg
+[gitter-url]:     https://gitter.im/zeekay/hi
+
+<!-- not used -->
+[downloads-img]:     https://img.shields.io/npm/dm/referential.svg
+[downloads-url]:     http://badge.fury.io/js/referential
+[devdependency-img]: https://david-dm.org/zeekay/referential/dev-status.svg
+[devdependency-url]: https://david-dm.org/zeekay/referential#info=devDependencies
