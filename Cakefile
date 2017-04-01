@@ -9,10 +9,15 @@ use 'cake-publish'
 use 'cake-outdated'
 
 task 'build', 'build project', ->
+  b = new Bundle
+    compilers:
+      coffee:
+        version: 1
+
   Promise.all [
-    bundle.write
+    b.write
       entry: 'src/index.coffee'
-    bundle.write
+    b.write
       entry:  'src/cli.coffee'
       format: 'cjs'
       dest:   'lib/cli.js'

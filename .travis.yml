@@ -1,14 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-  - 4
-  - 5
+  - 7
 script:
   - cake test
 cache:
   directories:
     - node_modules
-notifications:
-  email:
-    on_success: change
-    on_failure: always

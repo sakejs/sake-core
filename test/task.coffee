@@ -5,7 +5,7 @@ describe 'task', ->
 
   it 'should accept action expecting only a callback', ->
     {stdout} = yield run 'async'
-    stdout.should.equal '[Function]'
+    stdout.should.equal '[Function: done]'
 
   it 'should accept action expecting options, callback', ->
     {stdout} = yield run 'async-options'
