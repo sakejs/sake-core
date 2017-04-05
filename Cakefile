@@ -1,9 +1,9 @@
-use 'sake-bundle'
-use 'sake-exec'
-use 'sake-outdated'
-use 'sake-publish'
-use 'sake-shell'
-use 'sake-version'
+require 'shortcake'
+
+use 'cake-bundle'
+use 'cake-outdated'
+use 'cake-publish'
+use 'cake-version'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
