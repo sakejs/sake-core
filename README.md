@@ -158,7 +158,7 @@ task 'package', 'Package project', ->
 ```
 
 ### Using Sake with Cake
-You can convert any Cakefile into a Sakefile by requiring `sake` at the top
+You can upgrade any Cakefile into a Sakefile by requiring `sake-core` at the top
 of your Cakefile.
 
 #### More
