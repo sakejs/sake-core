@@ -1,12 +1,12 @@
-require './'
+require 'sake-core'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
-use 'cake-bundle'
-use 'cake-version'
-use 'cake-publish'
-use 'cake-outdated'
+use 'sake-bundle'
+use 'sake-outdated'
+use 'sake-publish'
+use 'sake-version'
 
 task 'build', 'build project', ->
   b = new Bundle
