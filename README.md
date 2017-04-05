@@ -162,14 +162,13 @@ You can convert any Cakefile into a Sakefile by requiring `sake` at the top
 of your Cakefile.
 
 #### More
-You can peruse [Sake's
-Sakefile](https://github.com/sakejs/sake/blob/master/Sakefile) for a real
-world example.
+You can peruse Sake's [Sakefile][sakefile] for a real world example.
 
 ## License
 [BSD-3-Clause][license-url]
 
 [sake-cli]:         https://github.com/sakejs/sake-cli
+[sakefile]:         https://github.com/sakejs/sake/blob/master/Sakefile
 
 [build-img]:        https://img.shields.io/travis/sakejs/sake.svg
 [build-url]:        https://travis-ci.org/sakejs/sake
