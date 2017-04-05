@@ -10,8 +10,9 @@
     "test": "cake test"
   },
   "files": [
-    "src/",
-    "lib/"
+    "install.js",
+    "lib/",
+    "src/"
   ],
   "repository": {
     "type": "git",
