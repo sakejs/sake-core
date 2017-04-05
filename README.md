@@ -9,8 +9,8 @@
 
 ### Build system for JavaScript applications with extensible core and support for modern JS.
 
-Sake is a build system and task runner for JavaScript with support for
-asynchronous tasks, generators, promises and dependencies. Inspired by
+Sake is a build tool and task runner for JavaScript applications. Sake features
+an extensible core and support for modern JS. Inspired by
 [Cake](http://coffeescript.org/documentation/docs/cake.html), Sake is the
 perfect DSL for building projects.
 

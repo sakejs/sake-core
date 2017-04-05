@@ -1,27 +1,19 @@
-require 'sake-core'
+use 'sake-bundle'
+use 'sake-exec'
+use 'sake-outdated'
+use 'sake-publish'
+use 'sake-shell'
+use 'sake-version'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
-use 'sake-bundle'
-use 'sake-outdated'
-use 'sake-publish'
-use 'sake-version'
-
 task 'build', 'build project', ->
-  b = new Bundle
+  bundle.write
+    entry: 'src/index.coffee'
     compilers:
       coffee:
         version: 1
-
-  Promise.all [
-    b.write
-      entry: 'src/index.coffee'
-    b.write
-      entry:  'src/cli.coffee'
-      format: 'cjs'
-      dest:   'lib/cli.js'
-  ]
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
