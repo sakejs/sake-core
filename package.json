@@ -6,8 +6,8 @@
   "module": "lib/sake.mjs",
   "jsnext:main": "lib/sake.mjs",
   "scripts": {
-    "prepublishOnly": "cake build",
-    "test": "cake test"
+    "prepublishOnly": "sake build",
+    "test": "sake test"
   },
   "files": [
     "install.js",
