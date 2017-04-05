@@ -9,11 +9,20 @@ option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
 task 'build', 'build project', ->
-  bundle.write
-    entry: 'src/index.coffee'
+  b = new Bundle
     compilers:
       coffee:
         version: 1
+
+  Promise.all [
+    b.write
+      entry: 'src/index.coffee'
+    b.write
+      entry:  'src/install.coffee'
+      dest:   'install.js'
+      format: 'cjs'
+      sourceMap: false
+  ]
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''
