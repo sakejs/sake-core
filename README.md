@@ -167,7 +167,7 @@ Sakefile](https://github.com/sakejs/sake-core/blob/master/Sakefile) for a real
 world example.
 
 ## License
-[MIT][license-url]
+[BSD-3-Clause][license-url]
 
 [sake-cli]:         https://github.com/sakejs/sake-cli
 
