@@ -39,8 +39,8 @@
     "uglify",
     "watch"
   ],
-  "author": "Hanzo, Inc <hi@hanzo.io",
-  "license": "MIT",
+  "author": "Hanzo, Inc. <hi@hanzo.io",
+  "license": "BSD",
   "bugs": {
     "url": "https://github.com/sakejs/sake-core/issues"
   },
