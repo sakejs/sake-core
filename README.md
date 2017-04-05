@@ -7,7 +7,7 @@
 [![license][license-img]][license-url]
 [![chat][chat-img]][chat-url]
 
-> Sake is a build tool for JavaScript.
+> it is cold, but · we have sake · and the hot spring
 
 Sake is a build tool and task runner for JavaScript. Sake features an extensible
 core and support for modern JS. Inspired by
