@@ -7,10 +7,10 @@
 [![license][license-img]][license-url]
 [![chat][chat-img]][chat-url]
 
-> Sake is a build tool for JavaScript applications.
+> Sake is a build tool for JavaScript.
 
-Sake is a build tool and task runner for JavaScript applications. Sake features
-an extensible core and support for modern JS. Inspired by
+Sake is a build tool and task runner for JavaScript. Sake features an extensible
+core and support for modern JS. Inspired by
 [Cake](http://coffeescript.org/documentation/docs/cake.html), Sake is the
 perfect DSL for building projects.
 
