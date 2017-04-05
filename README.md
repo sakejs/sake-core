@@ -60,7 +60,7 @@ task 'minify:js',   'minify js', (done) ->
 ```
 
 #### Promise tasks
-You can also return a promise from your task and sake-core will automatically
+You can also return a promise from your task and sake will automatically
 wait for it to resolve. Since `executive` returns a promise, this works too:
 
 ```coffee
@@ -158,12 +158,12 @@ task 'package', 'Package project', ->
 ```
 
 ### Using Sake with Cake
-You can convert any Cakefile into a Sakefile by requiring `sake-core` at the top
+You can convert any Cakefile into a Sakefile by requiring `sake` at the top
 of your Cakefile.
 
 #### More
-You can peruse [sake-core's
-Sakefile](https://github.com/sakejs/sake-core/blob/master/Sakefile) for a real
+You can peruse [Sake's
+Sakefile](https://github.com/sakejs/sake/blob/master/Sakefile) for a real
 world example.
 
 ## License
@@ -171,17 +171,17 @@ world example.
 
 [sake-cli]:         https://github.com/sakejs/sake-cli
 
-[build-img]:        https://img.shields.io/travis/sakejs/sake-core.svg
-[build-url]:        https://travis-ci.org/sakejs/sake-core
+[build-img]:        https://img.shields.io/travis/sakejs/sake.svg
+[build-url]:        https://travis-ci.org/sakejs/sake
 [chat-img]:         https://badges.gitter.im/join-chat.svg
 [chat-url]:         https://gitter.im/sakejs/hi
-[coverage-img]:     https://coveralls.io/repos/sakejs/sake-core/badge.svg?branch=master&service=github
-[coverage-url]:     https://coveralls.io/github/sakejs/sake-core?branch=master
-[dependencies-img]: https://david-dm.org/sakejs/sake-core.svg
-[dependencies-url]: https://david-dm.org/sakejs/sake-core
-[downloads-img]:    https://img.shields.io/npm/dm/sake-core.svg
-[downloads-url]:    http://badge.fury.io/js/sake-core
-[license-img]:      https://img.shields.io/npm/l/sake-core.svg
-[license-url]:      https://github.com/sakejs/sake-core/blob/master/LICENSE
-[npm-img]:          https://img.shields.io/npm/v/sake-core.svg
-[npm-url]:          https://www.npmjs.com/package/sake-core
+[coverage-img]:     https://coveralls.io/repos/sakejs/sake/badge.svg?branch=master&service=github
+[coverage-url]:     https://coveralls.io/github/sakejs/sake?branch=master
+[dependencies-img]: https://david-dm.org/sakejs/sake.svg
+[dependencies-url]: https://david-dm.org/sakejs/sake
+[downloads-img]:    https://img.shields.io/npm/dm/sake.svg
+[downloads-url]:    http://badge.fury.io/js/sake
+[license-img]:      https://img.shields.io/npm/l/sake.svg
+[license-url]:      https://github.com/sakejs/sake/blob/master/LICENSE
+[npm-img]:          https://img.shields.io/npm/v/sake.svg
+[npm-url]:          https://www.npmjs.com/package/sake
