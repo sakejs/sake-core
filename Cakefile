@@ -1,5 +1,3 @@
-require 'shortcake'
-
 use 'cake-bundle'
 use 'cake-outdated'
 use 'cake-publish'
