@@ -1,27 +1,19 @@
-require './'
+require 'shortcake'
+
+use 'cake-bundle'
+use 'cake-outdated'
+use 'cake-publish'
+use 'cake-version'
 
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
-use 'cake-bundle'
-use 'cake-version'
-use 'cake-publish'
-use 'cake-outdated'
-
 task 'build', 'build project', ->
-  b = new Bundle
+  bundle.write
+    entry: 'src/index.coffee'
     compilers:
       coffee:
         version: 1
-
-  Promise.all [
-    b.write
-      entry: 'src/index.coffee'
-    b.write
-      entry:  'src/cli.coffee'
-      format: 'cjs'
-      dest:   'lib/cli.js'
-  ]
 
 task 'test', 'run tests', (opts) ->
   grep = if opts.grep then "--grep #{opts.grep}" else ''

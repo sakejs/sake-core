@@ -1,27 +1,49 @@
-# shortcake [![NPM version][npm-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Dependency Status][dependency-img]][dependency-url] [![Gitter chat][gitter-img]][gitter-url]
+# Sake
 
-Adds asynchronous tasks, generators, promises, dependencies and more to
-[Cake](http://coffeescript.org/documentation/docs/cake.html).
+[![npm][npm-img]][npm-url]
+[![build][build-img]][build-url]
+[![dependencies][dependencies-img]][dependencies-url]
+[![downloads][downloads-img]][downloads-url]
+[![license][license-img]][license-url]
+[![chat][chat-img]][chat-url]
+
+> It is cold, but · we have Sake · and the hot spring
+
+Sake is a build tool and task runner for JavaScript. Sake features an extensible
+core and support for modern JS. Inspired by
+[Cake](http://coffeescript.org/documentation/docs/cake.html), Sake is the
+perfect DSL for building projects.
 
 ### Features
-- Asynchronous tasks are fully supported and composable.
-- Generator based-control flow for tasks with full support for Promises.
-- Tasks can declare dependencies and ensure they execute successfully first.
-- You can require CoffeeScript files from your Cakefile automatically.
-- More natural CLI (options can be specified last, i.e.: `cake build --minify`).
-- Better stacktraces with source map support for CoffeeScript files.
 - Additional helpers to make writing tasks faster and more pleasant.
+- Generator based-control flow in tasks with full support for Promises.
+- Intutive CLI and automatic option parsing.
+- Plugin architecture with available plugins for many common build tasks.
+- Tasks can declare dependencies and be easily composed of and interact with
+  other tasks.
+- Modern JS support:
+    - Async/Await
+    - ES modules
+    - Generators
+    - Promises
 
 ### Install
 ```
-npm install -g shortcake
+npm install sake-core --save-dev
 ```
 
-For best results `alias cake=shortcake` in your `~/.zshrc` or `~/.bashrc`.
-
 ### Usage
-Just add `require 'shortcake'` at the top of your Cakefile!
+Typically Sake is used via it's command line interface which can be installed
+with `npm install -g sake-cli`. Once the [`sake`][sake-cli] command is
+available, you can begin writing a `Sakefile` and defining available tasks in
+your project.
 
+### Sakefile
+Sake will search for a Sakefile with tasks defined for your current project.
+Sakefiles can be written in ES2015 JavaScript and support modules natively.
+
+Optionally, you can write your Sakefile in CoffeeScript, which allows a very
+nice DSL-ish experience.
 
 ### Examples
 #### Async tasks
@@ -38,7 +60,7 @@ task 'minify:js',   'minify js', (done) ->
 ```
 
 #### Promise tasks
-You can also return a promise from your task and shortcake will automatically
+You can also return a promise from your task and sake will automatically
 wait for it to resolve. Since `executive` returns a promise, this works too:
 
 ```coffee
@@ -135,24 +157,30 @@ task 'package', 'Package project', ->
   '''
 ```
 
+### Using Sake with Cake
+You can upgrade any Cakefile into a Sakefile by requiring `sake-core` at the top
+of your Cakefile.
+
 #### More
-You can peruse [shortcake's
-Cakefile](https://github.com/zeekay/shortcake/blob/master/Cakefile) for a real
-world example.
+You can peruse Sake's [Sakefile][sakefile] for a real world example.
 
-[travis-img]:     https://img.shields.io/travis/zeekay/shortcake.svg
-[travis-url]:     https://travis-ci.org/zeekay/shortcake
-[coveralls-img]:  https://coveralls.io/repos/zeekay/shortcake/badge.svg?branch=master&service=github
-[coveralls-url]:  https://coveralls.io/github/zeekay/shortcake?branch=master
-[dependency-url]: https://david-dm.org/zeekay/shortcake
-[dependency-img]: https://david-dm.org/zeekay/shortcake.svg
-[npm-img]:        https://img.shields.io/npm/v/shortcake.svg
-[npm-url]:        https://www.npmjs.com/package/shortcake
-[gitter-img]:     https://badges.gitter.im/join-chat.svg
-[gitter-url]:     https://gitter.im/zeekay/hi
+## License
+[BSD-3-Clause][license-url]
 
-<!-- not used -->
-[downloads-img]:     https://img.shields.io/npm/dm/shortcake.svg
-[downloads-url]:     http://badge.fury.io/js/shortcake
-[devdependency-img]: https://david-dm.org/zeekay/shortcake/dev-status.svg
-[devdependency-url]: https://david-dm.org/zeekay/shortcake#info=devDependencies
+[sake-cli]:         https://github.com/sakejs/sake-cli
+[sakefile]:         https://github.com/sakejs/sake/blob/master/Sakefile
+
+[build-img]:        https://img.shields.io/travis/sakejs/sake.svg
+[build-url]:        https://travis-ci.org/sakejs/sake
+[chat-img]:         https://badges.gitter.im/join-chat.svg
+[chat-url]:         https://gitter.im/sakejs/sake
+[coverage-img]:     https://coveralls.io/repos/sakejs/sake/badge.svg?branch=master&service=github
+[coverage-url]:     https://coveralls.io/github/sakejs/sake?branch=master
+[dependencies-img]: https://david-dm.org/sakejs/sake.svg
+[dependencies-url]: https://david-dm.org/sakejs/sake
+[downloads-img]:    https://img.shields.io/npm/dm/sake-core.svg
+[downloads-url]:    http://badge.fury.io/js/sake-core
+[license-img]:      https://img.shields.io/npm/l/sake.svg
+[license-url]:      https://github.com/sakejs/sake/blob/master/LICENSE
+[npm-img]:          https://img.shields.io/npm/v/sake-core.svg
+[npm-url]:          https://www.npmjs.com/package/sake-core
