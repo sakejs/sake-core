@@ -1,10 +1,7 @@
 import 'postmortem/register'
 
-import exec   from 'executive'
-import path   from 'path'
-import vigil  from 'vigil'
+import path    from 'path'
 
-import cp      from './cp'
 import invoke  from './invoke'
 import running from './running'
 import task    from './task'
@@ -17,14 +14,10 @@ binPath = path.join process.cwd(), 'node_modules/', '.bin'
 
 process.env.PATH = ([binPath].concat process.env.PATH.split ':').join ':'
 
-global.cp      = cp
-global.exec    = exec
 global.invoke  = invoke
 global.running = running
 global.task    = task
 global.tasks   = tasks
 global.use     = use
-global.walk    = vigil.walk
-global.watch   = vigil.watch
 
-export {cp, exec, invoke, running, task, tasks, use}
+export {invoke, running, task, tasks, use}
