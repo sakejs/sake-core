@@ -5,6 +5,10 @@ import tasks   from './tasks'
 import use     from './use'
 
 install = ->
+  # Ensure local node_modules bin is on the front of $PATH
+  binPath = path.join process.cwd(), 'node_modules/', '.bin'
+  process.env.PATH = ([binPath].concat process.env.PATH.split ':').join ':'
+
   global.invoke  = invoke
   global.running = running
   global.task    = task
