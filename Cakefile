@@ -6,6 +6,8 @@ use 'cake-version'
 option '-g', '--grep [filter]', 'test filter'
 option '-t', '--test',          'test specific module'
 
+global.exec = require 'executive'
+
 task 'build', 'build project', ->
   b = new Bundle
     compilers:
