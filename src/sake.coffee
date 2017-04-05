@@ -1,4 +1,5 @@
-import {join}  from 'path'
+import exec   from 'executive'
+import {join} from 'path'
 
 import invoke  from './invoke'
 import running from './running'
@@ -11,6 +12,7 @@ install = ->
   binPath = join process.cwd(), 'node_modules/', '.bin'
   process.env.PATH = ([binPath].concat process.env.PATH.split ':').join ':'
 
+  global.exec    = exec
   global.invoke  = invoke
   global.running = running
   global.task    = task
