@@ -7,7 +7,7 @@
 [![license][license-img]][license-url]
 [![chat][chat-img]][chat-url]
 
-### Build system for JavaScript applications with extensible core and support for modern JS.
+> Sake is a build tool for JavaScript applications.
 
 Sake is a build tool and task runner for JavaScript applications. Sake features
 an extensible core and support for modern JS. Inspired by
