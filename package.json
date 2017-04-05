@@ -6,8 +6,8 @@
   "module": "lib/sake-core.mjs",
   "jsnext:main": "lib/sake-core.mjs",
   "scripts": {
-    "prepublishOnly": "cake build",
-    "test": "cake test"
+    "prepublishOnly": "sake build",
+    "test": "sake test"
   },
   "files": [
     "src/",
@@ -21,8 +21,8 @@
     "async",
     "build",
     "bundle",
-    "cake",
-    "cakefile",
+    "sake",
+    "sakefile",
     "cli",
     "coffee",
     "coffee-script",
@@ -55,11 +55,11 @@
   "devDependencies": {
     "bluebird": "3.5.0",
     "brief": "1.1.0",
-    "cake-bundle": "0.2.20",
-    "cake-outdated": "0.1.16",
-    "cake-publish": "0.1.10",
-    "cake-test": "0.1.0",
-    "cake-version": "0.1.14",
+    "sake-bundle": "0.2.20",
+    "sake-outdated": "0.1.16",
+    "sake-publish": "0.1.10",
+    "sake-test": "0.1.0",
+    "sake-version": "0.1.14",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
     "co-mocha": "1.2.0",
