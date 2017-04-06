@@ -2,9 +2,9 @@
   "name": "sake-core",
   "version": "1.3.6",
   "description": "Build system for JavaScript applications with extensible core and support for modern JS.",
-  "main": "lib/sake.js",
-  "module": "lib/sake.mjs",
-  "jsnext:main": "lib/sake.mjs",
+  "main": "lib/sake-core.js",
+  "module": "lib/sake-core.mjs",
+  "jsnext:main": "lib/sake-core.mjs",
   "scripts": {
     "prepublishOnly": "sake build",
     "test": "sake test"
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/sakejs/sake"
+    "url": "git://github.com/sakejs/sake-core"
   },
   "keywords": [
     "async",
@@ -43,7 +43,7 @@
   "author": "Hanzo, Inc. <hi@hanzo.io",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/sakejs/sake/issues"
+    "url": "https://github.com/sakejs/sake-core/issues"
   },
   "homepage": "https://sakejs.com",
   "dependencies": {
