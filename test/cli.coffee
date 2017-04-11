@@ -1,5 +1,5 @@
-describe 'bin/shortcake', ->
-  it 'should show normal cake usage', ->
+describe 'bin/sake', ->
+  it 'should show normal sake usage', ->
     {stdout} = yield run ''
     stdout.lines[0].should.equal 'Cakefile defines the following tasks:'
 

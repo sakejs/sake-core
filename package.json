@@ -4,9 +4,10 @@
   "description": "Build system for JavaScript applications with extensible core and support for modern JS.",
   "main": "lib/sake-core.js",
   "module": "lib/sake-core.mjs",
-  "jsnext:main": "lib/sake-core.mjs",
   "scripts": {
+    "build": "sake build",
     "prepublishOnly": "sake build",
+    "pretest": "sake build",
     "test": "sake test"
   },
   "files": [
@@ -57,16 +58,12 @@
   "devDependencies": {
     "bluebird": "3.5.0",
     "brief": "1.1.0",
-    "cake-bundle": "0.2.21",
-    "cake-outdated": "0.1.18",
-    "cake-publish": "0.1.10",
-    "cake-test": "0.1.0",
-    "cake-version": "0.1.15",
-    "chai": "3.5.0",
-    "chai-as-promised": "6.0.0",
-    "co-mocha": "1.2.0",
     "coffee-script": "1.12.5",
-    "mocha": "3.2.0",
-    "mz": "2.6.0"
+    "sake-bundle": "0.4.11",
+    "sake-cli": "0.3.2",
+    "sake-outdated": "0.1.20",
+    "sake-publish": "0.1.12",
+    "sake-test": "0.1.4",
+    "sake-version": "0.1.18"
   }
 }
