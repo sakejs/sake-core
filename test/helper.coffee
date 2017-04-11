@@ -1,7 +1,3 @@
-chai = require 'chai'
-chai.should()
-chai.use require 'chai-as-promised'
-
 # convenient for testing
 Object.defineProperty String.prototype, 'lines',
   get: -> @split '\n'
@@ -9,12 +5,13 @@ Object.defineProperty String.prototype, 'lines',
 path = require 'path'
 exec = require('executive').quiet
 
-# path to shortcake
+# path to sake
 cwd = __dirname
-bin = path.join cwd, '/../bin/shortcake'
+bin = require.resolve 'sake-cli/bin/sake'
 
 # Helper to run shortcake in tests
 run = (cmd) ->
+  console.log bin, cmd
   p = exec "#{bin} #{cmd}", {cwd: cwd}
   p.then (res) ->
     res.stdout = res.stdout.trim()
