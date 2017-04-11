@@ -168,19 +168,19 @@ You can peruse Sake's [Sakefile][sakefile] for a real world example.
 [BSD-3-Clause][license-url]
 
 [sake-cli]:         https://github.com/sakejs/sake-cli
-[sakefile]:         https://github.com/sakejs/sake/blob/master/Sakefile
+[sakefile]:         https://github.com/sakejs/sake-core/blob/master/Sakefile
 
-[build-img]:        https://img.shields.io/travis/sakejs/sake.svg
-[build-url]:        https://travis-ci.org/sakejs/sake
+[build-img]:        https://img.shields.io/travis/sakejs/sake-core.svg
+[build-url]:        https://travis-ci.org/sakejs/sake-core
 [chat-img]:         https://badges.gitter.im/join-chat.svg
-[chat-url]:         https://gitter.im/sakejs/sake
-[coverage-img]:     https://coveralls.io/repos/sakejs/sake/badge.svg?branch=master&service=github
-[coverage-url]:     https://coveralls.io/github/sakejs/sake?branch=master
-[dependencies-img]: https://david-dm.org/sakejs/sake.svg
-[dependencies-url]: https://david-dm.org/sakejs/sake
+[chat-url]:         https://gitter.im/sakejs/chat
+[coverage-img]:     https://coveralls.io/repos/sakejs/sake-core/badge.svg?branch=master&service=github
+[coverage-url]:     https://coveralls.io/github/sakejs/sake-core?branch=master
+[dependencies-img]: https://david-dm.org/sakejs/sake-core.svg
+[dependencies-url]: https://david-dm.org/sakejs/sake-core
 [downloads-img]:    https://img.shields.io/npm/dm/sake-core.svg
 [downloads-url]:    http://badge.fury.io/js/sake-core
-[license-img]:      https://img.shields.io/npm/l/sake.svg
-[license-url]:      https://github.com/sakejs/sake/blob/master/LICENSE
+[license-img]:      https://img.shields.io/npm/l/sake-core.svg
+[license-url]:      https://github.com/sakejs/sake-core/blob/master/LICENSE
 [npm-img]:          https://img.shields.io/npm/v/sake-core.svg
 [npm-url]:          https://www.npmjs.com/package/sake-core
