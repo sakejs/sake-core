@@ -17,10 +17,7 @@ invoke = (name, opts, cb) ->
   invoked[name] = true
 
   # Grab task action, any deps and parsed options
-  {action, deps, options} = tasks[name]
-
-  # Extend caller provided parsed options
-  opts = Object.assign options, opts
+  {action, deps} = tasks[name]
 
   done = (err) ->
     invoked = {}
