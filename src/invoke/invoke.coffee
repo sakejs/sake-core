@@ -11,7 +11,7 @@ invoked = {}
 
 # Invoke delegates to one of the above
 invoke = (name, opts, cb) ->
-  log.debug 'invoke'
+  log.debug 'invoke', name, opts
 
   # Prevent recursive calls
   return if invoked[name]
