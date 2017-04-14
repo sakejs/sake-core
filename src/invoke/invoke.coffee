@@ -1,10 +1,11 @@
+import {isFunction, isGeneratorFunction} from 'es-is'
+
 import invokeAsync     from './async'
 import invokeGenerator from './generator'
 import invokeSync      from './sync'
 import log             from '../log'
 import serial          from './serial'
 import tasks           from '../tasks'
-import {isFunction, isGeneratorFn} from '../utils'
 
 invoked = {}
 
@@ -27,7 +28,7 @@ invoke = (name, opts, cb) ->
     return done err if err?
 
     # Is a generator task
-    if isGeneratorFn action
+    if isGeneratorFunction action
       return invokeGenerator name, action, opts, done
 
     # Two arguments, action expects callback

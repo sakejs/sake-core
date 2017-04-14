@@ -1,6 +1,7 @@
-import invoke       from './invoke'
-import log          from '../log'
-import {isFunction} from '../utils'
+import {isFunction} from 'es-is'
+
+import invoke from './invoke'
+import log    from '../log'
 
 # Invoke tasks in serial
 invokeParallel = (tasks, opts, cb) ->

@@ -1,6 +1,5 @@
 import resolve from 'resolve'
-
-import {isFunction, isString} from './utils'
+import {isFunction, isString} from 'es-is'
 
 export default (pkg, opts = {}) ->
   if isString pkg

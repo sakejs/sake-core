@@ -1,7 +1,7 @@
 import log   from './log'
 import tasks from './tasks'
 
-import {isArray, isFunction} from './utils'
+import {isArray, isFunction} from 'es-is'
 
 export default (name, description, deps, action) ->
   # No description, just deps
