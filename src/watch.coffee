@@ -1,5 +1,5 @@
 import vigil from 'vigil'
-import {isFunction, isString} from './utils'
+import {isFunction, isString} from 'es-is'
 
 export default (dir, task, opts = {}) ->
   if isString task

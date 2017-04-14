@@ -1,7 +1,8 @@
+import {isPromise} from 'es-is'
+
 import log     from '../log'
 import running from '../running'
 
-import {isPromise} from '../utils'
 
 # Invoke sync task
 invokeSync = (name, action, opts, cb) ->

@@ -1,6 +1,7 @@
+import {isArray, isFunction} from 'es-is'
+
 import parallel from './parallel'
 import serial   from './serial'
-import {isArray, isFunction} from '../utils'
 
 # Wrap invokeSerial, invokeParallel to ensure sane arguments
 wrap = (fn) ->

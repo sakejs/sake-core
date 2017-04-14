@@ -1,8 +1,7 @@
 import cp   from 'cp'
 import path from 'path'
 import fs   from 'fs'
-
-import {isFunction} from './utils'
+import {isFunction} from 'es-is'
 
 export default (src, dst, opts, cb) ->
   if isFunction opts
