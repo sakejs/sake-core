@@ -23,11 +23,10 @@ install = ->
   global.exec    = exec # Deprecated
 
 export {
+  install
   invoke
   running
   task
   tasks
   use
 }
-
-export default sake = install: install
