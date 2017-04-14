@@ -1,4 +1,3 @@
-import cake            from '../cake'
 import invokeAsync     from './async'
 import invokeGenerator from './generator'
 import invokeSync      from './sync'
@@ -16,10 +15,6 @@ invoke = (name, opts, cb) ->
   # Prevent recursive calls
   return if invoked[name]
   invoked[name] = true
-
-  # Calling cake's invoke ensures that options are passed to us correctly as
-  # well as ensuring the normal missing task error is shown.
-  cake.invoke name
 
   # Grab task action, any deps and parsed options
   {action, deps, options} = tasks[name]

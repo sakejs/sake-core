@@ -1,4 +1,3 @@
-import cake  from './cake'
 import log   from './log'
 import tasks from './tasks'
 
@@ -30,8 +29,3 @@ export default (name, description, deps, action) ->
     action:      action
 
   log.debug 'added task', tasks[name]
-
-  # Make sure original plumbing still works, inject our shim task
-  cake.task name, description, (options) ->
-    # Capture result of options for our own `invoke`
-    tasks[name].options = options

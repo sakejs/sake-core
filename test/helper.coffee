@@ -9,7 +9,7 @@ exec = require('executive').quiet
 cwd = __dirname
 bin = require.resolve 'sake-cli/bin/sake'
 
-# Helper to run shortcake in tests
+# Helper to run sake in tests
 run = (cmd) ->
   console.log bin, cmd
   p = exec "#{bin} #{cmd}", {cwd: cwd}
