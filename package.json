@@ -60,11 +60,11 @@
     "brief": "1.1.0",
     "coffee-script": "1.12.5",
     "es-is": "3.3.10",
-    "sake-bundle": "0.4.14",
-    "sake-cli": "0.4.3",
+    "sake-bundle": "0.4.16",
+    "sake-cli": "0.4.5",
     "sake-outdated": "0.1.20",
     "sake-publish": "0.1.12",
-    "sake-test": "0.1.4",
+    "sake-test": "0.1.5",
     "sake-version": "0.1.18"
   }
 }
