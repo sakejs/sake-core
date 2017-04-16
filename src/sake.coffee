@@ -2,13 +2,14 @@ import exec   from 'executive'
 import {join} from 'path'
 
 import invoke   from './invoke'
-import parallel from './invoke/parallel'
-import serial   from './invoke/serial'
 import option   from './option'
+import parallel from './invoke/parallel'
 import running  from './running'
+import serial   from './invoke/serial'
 import task     from './task'
 import tasks    from './tasks'
 import use      from './use'
+import watch    from './watch'
 
 install = ->
   # Ensure local node_modules bin is on the front of $PATH
@@ -22,15 +23,17 @@ install = ->
   global.tasks   = tasks
   global.use     = use
 
-  global.exec    = exec # Deprecated
+  global.watch   = watch # Deprecated
+  global.exec    = exec  # Deprecated
 
 export {
   install
   invoke
+  parallel
   running
+  serial
   task
   tasks
   use
-  serial
-  parallel
+  watch
 }
