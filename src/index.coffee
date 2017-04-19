@@ -1,8 +1,5 @@
 import * as sake from './sake'
-import {version} from '../package.json'
 
-sake.version = version
-
+export {version} from '../package.json'
 export * from './sake'
-export {version}
 export default sake
