@@ -11,6 +11,8 @@ import tasks    from './tasks'
 import use      from './use'
 import watch    from './watch'
 
+import {version} from '../package.json'
+
 install = ->
   # Ensure local node_modules bin is on the front of $PATH
   binPath = join process.cwd(), 'node_modules/', '.bin'
@@ -35,5 +37,6 @@ export {
   task
   tasks
   use
+  version
   watch
 }
