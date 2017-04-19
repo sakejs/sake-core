@@ -6,5 +6,9 @@ export default (pkg, opts = {}) ->
     path = resolve.sync pkg, basedir: process.cwd()
     pkg = require path
 
+    # Support CJS formatted ES modules with named + default exports
+    if pkg.default?
+      pkg = pkg.default
+
   if isFunction pkg
     pkg opts
