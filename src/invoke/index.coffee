@@ -1,4 +1,5 @@
-import {isArray, isFunction} from 'es-is'
+import isArray    from 'es-is/array'
+import isFunction from 'es-is/function'
 
 import parallel from './parallel'
 import serial   from './serial'

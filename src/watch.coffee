@@ -1,5 +1,6 @@
-import vigil from 'vigil'
-import {isFunction, isString} from 'es-is'
+import isFunction from 'es-is/function'
+import isString   from 'es-is/string'
+import vigil      from 'vigil'
 
 export default (dir, task, opts = {}) ->
   if isString task
