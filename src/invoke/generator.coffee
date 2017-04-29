@@ -1,6 +1,6 @@
-import log         from '../log'
-import running     from '../running'
-import {isPromise} from 'es-is'
+import log       from '../log'
+import running   from '../running'
+import isPromise from 'es-is/promise'
 
 
 # Invoke a enerator task continually until consumed

@@ -1,11 +1,13 @@
-import {isFunction, isGeneratorFunction} from 'es-is'
+import isFunction          from 'es-is/function'
+import isGeneratorFunction from 'es-is/generator-function'
+
+import log   from '../log'
+import tasks from '../tasks'
 
 import invokeAsync     from './async'
 import invokeGenerator from './generator'
 import invokeSync      from './sync'
-import log             from '../log'
 import serial          from './serial'
-import tasks           from '../tasks'
 
 invoked = {}
 

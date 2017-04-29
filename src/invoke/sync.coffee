@@ -1,4 +1,4 @@
-import {isPromise} from 'es-is'
+import isPromise from 'es-is/promise'
 
 import log     from '../log'
 import running from '../running'

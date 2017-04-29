@@ -1,5 +1,5 @@
-import chalk      from 'chalk'
-import {isString} from 'es-is'
+import chalk    from 'chalk'
+import isString from 'es-is/string'
 
 verbose = process.env.VERBOSE ? false
 
