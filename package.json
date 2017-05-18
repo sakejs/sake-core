@@ -20,6 +20,9 @@
     "type": "git",
     "url": "git://github.com/sakejs/sake-core"
   },
+  "typescript": {
+    "definition": "sake.d.ts"
+  },
   "keywords": [
     "async",
     "build",
