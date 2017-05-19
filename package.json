@@ -1,6 +1,6 @@
 {
   "name": "sake-core",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "description": "Build system for JavaScript applications with extensible core and support for modern JS.",
   "main": "lib/sake-core.js",
   "module": "lib/sake-core.mjs",
