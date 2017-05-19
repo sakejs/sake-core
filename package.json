@@ -4,12 +4,7 @@
   "description": "Build system for JavaScript applications with extensible core and support for modern JS.",
   "main": "lib/sake-core.js",
   "module": "lib/sake-core.mjs",
-  "scripts": {
-    "build": "sake build",
-    "prepublishOnly": "sake build",
-    "pretest": "sake build",
-    "test": "sake test"
-  },
+  "types": "sake.d.ts",
   "files": [
     "sake.d.ts",
     "install.js",
@@ -19,9 +14,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/sakejs/sake-core"
-  },
-  "typescript": {
-    "definition": "sake.d.ts"
   },
   "keywords": [
     "async",
@@ -69,5 +61,11 @@
     "sake-publish": "0.1.16",
     "sake-test": "0.1.5",
     "sake-version": "0.1.19"
+  },
+  "scripts": {
+    "build": "sake build",
+    "prepublishOnly": "sake build",
+    "pretest": "sake build",
+    "test": "sake test"
   }
 }
