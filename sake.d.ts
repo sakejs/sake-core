@@ -7,7 +7,7 @@ interface executive {
   strict: executive
   sync: executive
 }
-declare var exec: executive
+declare var exec:    executive
 declare var invoke:  (command: string | string[]) => Promise<any>
 declare var require: (module: string) => any
 declare var task:    (command: string, description: string, ...args: any[]) => void
