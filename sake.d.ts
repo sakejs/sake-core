@@ -1,10 +1,13 @@
-interface exec {
+interface executive {
   (command: string | any[], options?: any, callback?: any): Promise<any>
-  interactive: exec
-  parallel: exec
-  quiet: exec
+  interactive: executive
+  parallel: executive
+  quiet: executive
+  serial: executive
+  strict: executive
+  sync: executive
 }
-declare var exec: exec
+declare var exec: executive
 declare var invoke:  (command: string | string[]) => Promise<any>
 declare var require: (module: string) => any
 declare var task:    (command: string, description: string, ...args: any[]) => void
