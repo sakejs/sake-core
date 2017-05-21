@@ -5,7 +5,7 @@ interface executive {
   quiet: executive
   serial: executive
   strict: executive
-  sync: executive
+  sync: (command: string | any[], options?: any, callback?: any) => any
 }
 declare var exec:    executive
 declare var invoke:  (command: string | string[]) => Promise<any>
