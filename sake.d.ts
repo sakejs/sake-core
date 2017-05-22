@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-/// <reference types="executive" />
+import executive from 'executive'
 declare var exec: executive
 
 declare var invoke:  (command: string | string[]) => Promise<any>
