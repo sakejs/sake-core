@@ -4,9 +4,9 @@
   "description": "Build system for JavaScript applications with extensible core and support for modern JS.",
   "main": "lib/sake-core.js",
   "module": "lib/sake-core.mjs",
-  "types": "sake.d.ts",
+  "types": "sake-core.d.ts",
   "files": [
-    "sake.d.ts",
+    "sake-core.d.ts",
     "install.js",
     "lib/",
     "src/"
