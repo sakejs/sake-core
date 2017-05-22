@@ -1,7 +1,11 @@
 /// <reference types="node" />
-/// <reference types="executive" />
 
-declare var invoke:  (command: string | string[]) => Promise<any>
-declare var task:    (command: string, description: string, ...args: any[]) => void
-declare var use:     (plugin:  string) => void
-declare var watch:   (path: string, fn: any) => void
+import {executive} from 'executive'
+
+declare global {
+  var exec:    executive
+  var invoke:  (command: string | string[]) => Promise<any>
+  var task:    (command: string, description: string, ...args: any[]) => void
+  var use:     (plugin:  string) => void
+  var watch:   (path: string, fn: any) => void
+}
