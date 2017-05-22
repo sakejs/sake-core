@@ -1,14 +1,6 @@
 /// <reference types="node" />
 
-interface executive {
-  (command: string | any[], options?: any, callback?: any): Promise<any>
-  interactive: executive
-  parallel: executive
-  quiet: executive
-  serial: executive
-  strict: executive
-  sync: (command: string | any[], options?: any, callback?: any) => any
-}
+/// <reference types="executive" />
 declare var exec: executive
 
 declare var invoke:  (command: string | string[]) => Promise<any>
