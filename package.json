@@ -57,8 +57,8 @@
     "coffee-script": "^1.12.7",
     "es-is": "^3.3.10",
     "sake-bundle": "^0.6.3",
-    "sake-cli": "^0.5.20",
-    "sake-outdated": "^0.1.28",
+    "sake-cli": "^0.5.24",
+    "sake-outdated": "^0.2.1",
     "sake-publish": "^0.1.16",
     "sake-test": "^0.1.5",
     "sake-version": "^0.1.19"
