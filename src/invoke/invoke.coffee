@@ -20,7 +20,7 @@ invoke = (name, opts, cb) ->
   invoked[name] = true
 
   unless (task = tasks[name])?
-    throw new Error 'No such task: #{task}'
+    throw new Error "No such task: #{name}"
 
   # Grab task action, any deps and parsed options
   {action, deps} = tasks[name]
