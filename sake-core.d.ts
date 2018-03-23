@@ -1,4 +1,4 @@
-/// <reference types="node" />
+///<reference types="node"/>
 
 import executive from 'executive'
 
