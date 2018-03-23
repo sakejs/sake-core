@@ -44,6 +44,7 @@
   },
   "homepage": "https://sakejs.com",
   "dependencies": {
+    "@types/es6-promise": "^3.3.0",
     "@types/node": "^9.4.7",
     "chalk": "^2.3.2",
     "cp": "^0.2.0",
@@ -61,7 +62,8 @@
     "sake-outdated": "^0.2.1",
     "sake-publish": "^0.1.16",
     "sake-test": "^0.1.5",
-    "sake-version": "^0.1.19"
+    "sake-version": "^0.1.19",
+    "typescript": "^2.7.2"
   },
   "scripts": {
     "build": "sake build",
