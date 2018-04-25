@@ -24,6 +24,7 @@ install = ->
   global.options = options
   global.running = running
   global.task    = task
+  global.tasks   = tasks
   global.use     = use
 
   global.watch   = watch # Deprecated
