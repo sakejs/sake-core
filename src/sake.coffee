@@ -3,6 +3,7 @@ import {join} from 'path'
 
 import invoke   from './invoke'
 import option   from './option'
+import options  from './options'
 import parallel from './invoke/parallel'
 import running  from './running'
 import serial   from './invoke/serial'
@@ -20,9 +21,9 @@ install = ->
 
   global.invoke  = invoke
   global.option  = option
+  global.options = options
   global.running = running
   global.task    = task
-  global.tasks   = tasks
   global.use     = use
 
   global.watch   = watch # Deprecated
