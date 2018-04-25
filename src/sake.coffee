@@ -32,6 +32,8 @@ install = ->
 export {
   install
   invoke
+  option
+  options
   parallel
   running
   serial
