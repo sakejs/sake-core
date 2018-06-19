@@ -44,7 +44,7 @@
   },
   "homepage": "https://sakejs.com",
   "dependencies": {
-    "@types/node": "^10.3.3",
+    "@types/node": "^10.3.4",
     "chalk": "^2.4.1",
     "cp": "^0.2.0",
     "executive": "^1.6.3",
